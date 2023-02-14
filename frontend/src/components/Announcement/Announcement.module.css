@@ -1,0 +1,13 @@
+.title {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.content {
+  min-height: 300px;
+  border-radius: var(--paper-radius) !important;
+  box-shadow: var(--paper-shadow) !important;
+  padding: 16px;
+  margin: 0;
+  white-space: pre-line;
+}

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ERROR_TITLE_MESSAGE" translatable="false">페이지를 불러올 수 없습니다.</string>
+    <string name="WEBPAGE_ERROR">페이지 로드 중 오류가 발생하였습니다.</string>
+    <string name="DEFAULT">이 메시지가 계속 뜰 경우 오류를 신고해주세요.</string>
+    <string name="ERROR_HOST_LOOKUP">인터넷 연결을 확인해주세요!</string>
+    <string name="ERROR_CONNECT">서버에 연결할 수 없습니다.</string>
+    <string name="ERROR_REDIRECT_LOOP">리디렉션 횟수가 너무 많습니다.</string>
+    <string name="ERROR_TIMEOUT">서버 연결 시간을 초과하였습니다.</string>
+    <string name="ERROR_TOO_MANY_REQUEST">서버 요청 횟수가 너무 많습니다.</string>
+</resources>

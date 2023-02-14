@@ -1,0 +1,227 @@
+.eventImgCard {
+  position: relative;
+  min-height: 8rem;
+}
+
+.eventImgCard > img {
+  width: 100%;
+  height: auto;
+}
+
+.tagsWrapper {
+  padding: 12px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tagsTitle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  width: 100%;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.tagsList {
+  padding-top: 8px;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.tag {
+  display: flex;
+  padding: 4px;
+  background: var(--subject-tag-color);
+  color: #ffffff;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  gap: 2px;
+  white-space: nowrap;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.tag:hover {
+  background: #0276aa;
+  cursor: pointer;
+}
+
+.first {
+  background: #ffeb3b;
+}
+
+.second {
+  background: #00e676;
+}
+
+.third {
+  background: #c5c5c5;
+}
+
+.selectedTagsWrapper {
+  padding: 12px 12px 0 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+
+.NotesWrapper {
+  margin: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  row-gap: 4px;
+}
+
+.NotesHeader {
+  margin-top: 0.5rem;
+  display: flex;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+}
+
+.NotesHeader > span {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 0.8rem;
+}
+
+.NotesAvatar {
+  height: 1.5rem;
+  min-width: 1.5rem;
+  margin-right: 8px;
+}
+
+.NotesTitle {
+  font-size: 1.2rem;
+  line-height: 2.25rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  padding-left: 16px;
+  word-break: break-all;
+}
+
+.deletePost {
+  color: rgb(228, 77, 17);
+  margin-right: 8px;
+}
+
+.deletePost:hover {
+  text-decoration: underline;
+}
+
+.NotesTags {
+  margin: 0 0 8px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  padding-left: 16px;
+}
+
+.NotesPreview {
+  width: 100%;
+  position: relative;
+  margin-bottom: 16px;
+  padding-left: 16px;
+}
+
+.NotesImg {
+  width: 100%;
+  min-height: 64px;
+  height: auto;
+  margin: 0;
+  max-height: 200px;
+  object-fit: contain;
+}
+
+.NotesImg:before {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 50%;
+  content: "이미지를 불러오지 못했습니다.";
+  background: #999999;
+}
+
+.NotesUtils {
+  margin: 0;
+  align-items: center;
+  flex-direction: row;
+  display: flex;
+  padding-left: 8px;
+}
+
+.loading {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 2rem;
+  padding: 16px 0 0 0;
+  margin: 0;
+}
+
+.showImg {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99999;
+}
+
+.expandedImg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: initial;
+}
+
+.expandedImg:before {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 4rem;
+  content: "이미지를 불러오지 못했습니다.";
+  background: #999999;
+}

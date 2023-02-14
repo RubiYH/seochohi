@@ -1,0 +1,237 @@
+.homegrid {
+  z-index: 999;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  margin: 16px;
+  margin-top: 0;
+  padding: 12px;
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: var(--paper-radius) !important;
+  box-shadow: var(--paper-shadow) !important;
+}
+
+.avatar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar img {
+  height: 95px;
+  padding: 2px;
+  border-radius: 50%;
+}
+
+.avatarInfo {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 14px;
+}
+
+.userInfo {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  height: 95px;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+  white-space: nowrap;
+}
+
+.headerTools {
+  margin: 0;
+  padding: 0;
+  transform: translateX(12px);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+.linkTextRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.linkText {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  text-decoration: none;
+  color: var(--link-color-r);
+  font-size: 0.8rem;
+}
+
+.rT {
+  color: var(--link-color);
+}
+
+.linkText:hover {
+  text-decoration: underline;
+}
+
+.box-container {
+  position: relative;
+  height: 100%;
+  min-height: var(--paper-height);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  margin: 0;
+  padding: 16px;
+  padding-top: 0;
+  gap: 4px;
+}
+
+.gridTitle {
+  height: 1.5rem;
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.gridTitle span {
+  display: block;
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: 2rem;
+}
+
+.gridContent {
+  min-height: 300px;
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  text-align: center;
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: var(--paper-radius-sm) !important;
+}
+
+.gridTitleText {
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+.gridContent td {
+  height: 3.5rem !important;
+  width: 3rem !important;
+  font-size: 0.9rem !important;
+}
+
+.lunchInfo {
+  width: 12rem;
+  min-width: 180px;
+  padding-top: 0.95rem;
+  font-size: 0.9rem;
+  overflow: initial !important;
+}
+
+.lunchDate {
+  position: absolute;
+  min-width: 6rem;
+  top: -1rem;
+  padding: 0.45rem;
+  border-radius: var(--paper-radius-sm) !important;
+  box-shadow: var(--paper-shadow-sl) !important;
+}
+
+.lunchInfoContent {
+  font-size: 0.85rem;
+}
+
+.ForestWrapper {
+  width: 100%;
+  padding: 8px 0 8px 0;
+  margin: 0;
+  color: #666666;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+.ForestTitle {
+  margin-left: 1rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ForestContent {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.ForestTime {
+  white-space: nowrap;
+}
+
+.TimeContent {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.TimeContent > div {
+  padding: 4px 0 4px 0;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    width: 95%;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .gridContent td {
+    font-size: 0.75rem !important;
+    height: 2.5rem !important;
+  }
+}
+
+@media only screen and (max-width: 345px) {
+  .gridContent td {
+    font-size: 0.7rem !important;
+    height: 2.25rem !important;
+  }
+}

@@ -1,0 +1,33 @@
+.sideMenu {
+  width: calc(100% - 75% - 32px);
+  float: left;
+}
+
+.sideMenu a {
+  text-decoration: none;
+  color: initial;
+}
+
+.sideMenu a > li:hover {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.sideMenuHead {
+  border-bottom: 1px solid #dddddd;
+  padding: 4px;
+}
+
+.sideMenuHead > span {
+  font-size: 1.2rem;
+}
+
+.sideMenuItems {
+  padding: 16px;
+  margin-left: 12px;
+}
+
+@media only screen and (min-width: 1280px) {
+  .sideMenu {
+    width: calc(100% - 80% - 32px);
+  }
+}

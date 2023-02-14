@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  min-height: 120px;
+  padding: 16px;
+  padding-top: 0;
+  gap: 8px;
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: var(--paper-radius) !important;
+}

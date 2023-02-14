@@ -1,0 +1,24 @@
+.status {
+  display: block;
+  text-align: center;
+  padding: 0.25rem;
+  width: 100%;
+}
+
+.noteCard {
+  width: 100%;
+  text-decoration: none;
+  color: initial;
+}
+
+.noteCard h2 {
+  font-size: 1.3rem;
+  margin: 8px 0 8px 0;
+  padding: 0 4px 0 4px;
+}
+
+.lastEditedAt {
+  display: block;
+  font-size: 0.8rem;
+  padding: 0 4px 0 4px;
+}

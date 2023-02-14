@@ -1,0 +1,269 @@
+﻿<?xml version ="1.0"?>
+<configuration xmlns="urn:microsoft-catalog:XML_Metabase_V269_0">
+<MBProperty>
+<IIS_Global	Location ="."
+		BINSchemaTimeStamp="186ac39b0531d301"
+		ChangeNumber="452"
+		HistoryMajorVersionNumber="130"
+		SessionKey="49634b62980000004c00000040000000010200000168000000a4000001ac42e80076ce993290195d8bbc7309e57c43001c458230d841ae3a1bdd5c2209aad2760f8a4fa50e8fea0123144041ce3966d92851bb150a789a9bb2c3672865006e00ef70e0d0980863b06c343344d3ace200581e13c83130e883d96bd01e378548e05146c3a288b705bffb664ce0ee19bfffce6ffb0f86aec28fb7f754ee1f75d584"
+		XMLSchemaTimeStamp="44dfc39b0531d301"
+	>
+</IIS_Global>
+<IIS_ROOT	Location ="/"
+		AdminACL="49634462e00000009800000040000000811e924aa35a09a8f23aa9768e480c5b47762462da0d7eb4a2cbd7adebbdb7a845508b74a2a2206bd6ee27271199b67b8e53dcf0e6ee89c5216e6fe1e7fee53dd216aa4edba4838c5ec0e44d413b5cbc18c55440218134910104ef85ef891c89c91560e837e85af0f2edeb08d2452f51c39b5d6eac7e0e8c9c3504320b67d0f4fb57291af4af74b2adfbe11180532d180e45847d49d0ad63911a924daf36b162ee99626f914f70bf032fb126ef002f6fff6889c7c469ffed382c1b7a53096166085db7dc9982befe44e612d462ad1681c8c9ea3a1088607f"
+	>
+</IIS_ROOT>
+<IIsComputer	Location ="/LM"
+		EnableEditWhileRunning="0"
+		EnableHistory="1"
+		MaxBandwidth="4294967295"
+		MaxHistoryFiles="10"
+	>
+</IIsComputer>
+<IIsConfigObject	Location ="/LM/IISADMIN"
+	>
+</IIsConfigObject>
+<IIsConfigObject	Location ="/LM/IISADMIN/EXTENSIONS"
+	>
+</IIsConfigObject>
+<IIsConfigObject	Location ="/LM/IISADMIN/EXTENSIONS/DCOMCLSIDS"
+	>
+	<Custom
+		Name="MD_IISADMIN_EXTENSIONS"
+		ID="1028"
+		Value="{61738644-F196-11D0-9953-00C04FD919C1}"
+		Type="MULTISZ"
+		UserType="IIS_MD_UT_SERVER"
+		Attributes="NO_ATTRIBUTES"
+	/>
+</IIsConfigObject>
+<IIsConfigObject	Location ="/LM/IISADMIN/PROPERTYREGISTRATION"
+	>
+	<Custom
+		Name="MD_METADATA_ID_REGISTRATION"
+		ID="1030"
+		Value="0-65535;Microsoft Reserved
+			65536-524288;Microsoft IIS Admin Objects Reserved"
+		Type="MULTISZ"
+		UserType="IIS_MD_UT_SERVER"
+		Attributes="INHERIT"
+	/>
+</IIsConfigObject>
+<IIsLogModules	Location ="/LM/logging"
+		AdminACL="49634462a00000005800000040000000811e924aa35a09a8b23aa9764e480c5b47762462da0d7eb4a2cb97adeebdb7a845508b74a2a2206bd6ee27271199b67b8e53dcf0e6ee89c5206c7be16efee538f317aa4efba683894cc2e44d413b48b9b1c5544000823491f90021b46fd182a863fe35a68a86ce87f3010ed6c27518f1518c33534b19d9b261ed0df3cdc7b86c98e134024fb7cf0139337688c55b55eeb2c5579fa55d6119"
+	>
+</IIsLogModules>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging"
+		LogCustomPropertyServicesString="W3SVC
+			MSFTPSVC
+			SMTPSVC
+			NNTPSVC"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Date"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="date"
+		LogCustomPropertyID="4013"
+		LogCustomPropertyMask="1"
+		LogCustomPropertyName="날짜"
+		LogCustomPropertyNodeID="1"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyID="4013"
+		LogCustomPropertyName="확장 속성"
+		LogCustomPropertyNodeID="3"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Bytes Received"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="cs-bytes"
+		LogCustomPropertyMask="8192"
+		LogCustomPropertyName="받은 바이트 수"
+		LogCustomPropertyNodeID="17"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Bytes Sent"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="sc-bytes"
+		LogCustomPropertyMask="4096"
+		LogCustomPropertyName="보낸 바이트 수"
+		LogCustomPropertyNodeID="16"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Client IP Address"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="c-ip"
+		LogCustomPropertyMask="4"
+		LogCustomPropertyName="클라이언트 IP 주소"
+		LogCustomPropertyNodeID="5"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Cookie"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs(Cookie)"
+		LogCustomPropertyMask="131072"
+		LogCustomPropertyName="쿠키"
+		LogCustomPropertyNodeID="22"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Host"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-host"
+		LogCustomPropertyMask="1048576"
+		LogCustomPropertyName="호스트"
+		LogCustomPropertyNodeID="20"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Method"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-method"
+		LogCustomPropertyMask="128"
+		LogCustomPropertyName="메서드"
+		LogCustomPropertyNodeID="11"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Protocol Status"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="sc-status"
+		LogCustomPropertyMask="1024"
+		LogCustomPropertyName="프로토콜 상태"
+		LogCustomPropertyNodeID="14"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Protocol Substatus"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="sc-substatus"
+		LogCustomPropertyMask="2097152"
+		LogCustomPropertyName="프로토콜 하위 상태"
+		LogCustomPropertyNodeID="32"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Protocol Version"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-version"
+		LogCustomPropertyMask="524288"
+		LogCustomPropertyName="프로토콜 버전"
+		LogCustomPropertyNodeID="19"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Referer"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs(Referer)"
+		LogCustomPropertyMask="262144"
+		LogCustomPropertyName="참조 페이지"
+		LogCustomPropertyNodeID="23"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Server IP"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="s-ip"
+		LogCustomPropertyMask="64"
+		LogCustomPropertyName="서버 IP 주소"
+		LogCustomPropertyNodeID="9"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Server Name"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="s-computername"
+		LogCustomPropertyMask="32"
+		LogCustomPropertyName="서버 이름"
+		LogCustomPropertyNodeID="8"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Server Port"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="s-port"
+		LogCustomPropertyMask="32768"
+		LogCustomPropertyName="서버 포트"
+		LogCustomPropertyNodeID="10"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Service Name"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="s-sitename"
+		LogCustomPropertyMask="16"
+		LogCustomPropertyName="서비스 이름"
+		LogCustomPropertyNodeID="7"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Time Taken"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="time-taken"
+		LogCustomPropertyMask="16384"
+		LogCustomPropertyName="걸린 시간"
+		LogCustomPropertyNodeID="18"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/URI Query"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-uri-query"
+		LogCustomPropertyMask="512"
+		LogCustomPropertyName="URI 쿼리"
+		LogCustomPropertyNodeID="13"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/URI Stem"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-uri-stem"
+		LogCustomPropertyMask="256"
+		LogCustomPropertyName="URI 스템"
+		LogCustomPropertyNodeID="12"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/User Agent"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs(User-Agent)"
+		LogCustomPropertyMask="65536"
+		LogCustomPropertyName="사용자 에이전트"
+		LogCustomPropertyNodeID="21"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/User Name"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="cs-username"
+		LogCustomPropertyMask="8"
+		LogCustomPropertyName="사용자 이름"
+		LogCustomPropertyNodeID="6"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Extended Properties/Win32 Status"
+		LogCustomPropertyDataType="3"
+		LogCustomPropertyHeader="sc-win32-status"
+		LogCustomPropertyMask="2048"
+		LogCustomPropertyName="Win32 상태"
+		LogCustomPropertyNodeID="15"
+	>
+</IIsCustomLogModule>
+<IIsCustomLogModule	Location ="/LM/logging/Custom Logging/Time"
+		LogCustomPropertyDataType="6"
+		LogCustomPropertyHeader="time"
+		LogCustomPropertyID="4013"
+		LogCustomPropertyMask="2"
+		LogCustomPropertyName="시간"
+		LogCustomPropertyNodeID="2"
+	>
+</IIsCustomLogModule>
+<IIsLogModule	Location ="/LM/logging/Microsoft IIS 로그 파일 형식"
+		LogModuleId="{FF160657-DE82-11CF-BC0A-00AA006111E0}"
+		LogModuleUiId="{31DCAB87-BB3E-11d0-9299-00C04FB6678B}"
+	>
+</IIsLogModule>
+<IIsLogModule	Location ="/LM/logging/NCSA 공통 로그 파일 형식"
+		LogModuleId="{FF16065F-DE82-11CF-BC0A-00AA006111E0}"
+		LogModuleUiId="{31DCAB85-BB3E-11d0-9299-00C04FB6678B}"
+	>
+</IIsLogModule>
+<IIsLogModule	Location ="/LM/logging/ODBC 로깅"
+		LogModuleId="{FF16065B-DE82-11CF-BC0A-00AA006111E0}"
+		LogModuleUiId="{31DCAB86-BB3E-11d0-9299-00C04FB6678B}"
+	>
+</IIsLogModule>
+<IIsLogModule	Location ="/LM/logging/W3C 확장 로그 파일 형식"
+		LogModuleId="{FF160663-DE82-11CF-BC0A-00AA006111E0}"
+		LogModuleUiId="{31DCAB88-BB3E-11d0-9299-00C04FB6678B}"
+	>
+</IIsLogModule>
+</MBProperty>
+</configuration>

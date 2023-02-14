@@ -1,0 +1,118 @@
+.frame {
+  width: 100%;
+}
+
+.section_select {
+  width: 100%;
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: var(--paper-radius) !important;
+}
+
+.selectGrade,
+.selectSubject,
+.selectSemester,
+.btn-search {
+  padding: 16px;
+  padding-bottom: 0;
+  display: block;
+}
+
+.selectSemester {
+  padding-bottom: 1rem;
+}
+
+.btn-search {
+  padding: 16px;
+  padding-top: 0;
+}
+
+.h4 {
+  padding: 16px;
+  margin-top: 0;
+  font-weight: 600;
+}
+
+.DownloadFrame {
+  display: block;
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: var(--paper-radius) !important;
+}
+
+.DownloadTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.DTheader {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.DTheader > td {
+  padding: 0.5rem;
+}
+
+.DownloadTable > thead > tr > td {
+  text-align: center;
+}
+
+.dlTR {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.DownloadTable td {
+  text-align: center;
+  white-space: nowrap;
+  padding: 8px;
+}
+
+.dlSubject {
+  white-space: nowrap;
+}
+
+.dlTab > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  white-space: nowrap;
+}
+
+.dlPDF {
+  color: #e00000;
+}
+
+.DLTable {
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 480px) {
+  .frame {
+    width: 100%;
+  }
+
+  .btn-search {
+    text-align: center;
+  }
+
+  .DownloadTable td {
+    padding: 8px;
+  }
+
+  .DownloadTable .dlSubject {
+    white-space: pre-line;
+  }
+
+  .dlSubject {
+    white-space: pre-line;
+  }
+
+  .dlTab {
+    padding: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .dlTab > div {
+    flex-direction: column;
+  }
+}

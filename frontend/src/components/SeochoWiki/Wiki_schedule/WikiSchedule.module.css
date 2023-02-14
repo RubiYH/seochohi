@@ -1,0 +1,84 @@
+.filterContainer {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+
+  --filter-height: 16rem;
+}
+
+.filterBoxPC {
+  width: 75%;
+  min-height: var(--filter-height);
+  max-height: var(--filter-height);
+  background: #fff;
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: 1rem;
+}
+
+.filterTitle {
+  display: block;
+  text-align: center;
+  line-height: 3.5rem;
+  font-size: 1.25rem;
+}
+
+.filterItems {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  align-items: flex-start;
+  max-height: calc(100% - 4rem);
+}
+
+.calendar {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin: 0 auto;
+  width: calc(80% + 2rem);
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: var(--paper-radius) !important;
+}
+
+.eventList {
+  min-height: 12rem;
+  height: auto;
+  width: 80%;
+  padding: 16px;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: var(--paper-radius) !important;
+}
+
+.eventList > strong {
+  font-size: 1.5rem;
+  display: block;
+}
+
+@media only screen and (max-width: 1024px) {
+  .calendar {
+    margin-top: 1rem;
+  }
+
+  .wrapper {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .calendar {
+    width: calc(85% + 2rem);
+  }
+
+  .eventList {
+    margin-top: 1rem;
+    width: 85%;
+  }
+}

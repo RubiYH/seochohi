@@ -1,0 +1,117 @@
+.centerAlign {
+  display: flex;
+  align-items: center;
+}
+
+.infoCard {
+  position: relative;
+  padding: 16px;
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: var(--paper-radius) !important;
+}
+
+.cardHeader {
+  position: relative;
+  display: block;
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.infoCard > div {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 4px;
+}
+
+.infoCard table {
+  height: 100%;
+  margin: 0;
+  min-width: 8rem;
+  white-space: nowrap;
+  border-spacing: 0 0.5rem;
+}
+
+.infoCard td {
+  min-width: 4rem;
+}
+
+.avatar {
+  text-align: center;
+  width: 50%;
+  min-width: 128px;
+}
+
+.avatar > img {
+  box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px,
+    rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+  min-width: 128px;
+  height: 8rem;
+  margin: 0;
+}
+
+.key {
+  min-width: 1rem;
+  color: var(--color-disabled);
+}
+
+.value {
+  min-width: 2rem;
+}
+
+.studentinfo {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.infoRow {
+  min-width: 2rem;
+}
+
+.infoRow > span {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.logoutArea {
+  display: block;
+  margin: 2rem;
+  text-align: center;
+}
+
+.sessionList {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.sessionList:hover {
+  cursor: pointer;
+}
+
+.selected {
+  border-bottom: 1px solid black;
+}
+
+.session_table td {
+  white-space: normal;
+}
+
+.flexTr {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 16px;
+  padding: 0;
+  margin: 0;
+}
+
+.columnTr {
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 8px;
+}

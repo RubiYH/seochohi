@@ -1,0 +1,13 @@
+<resources>
+    <string name="enabled">false</string>
+    <string name="app_name">서초하이</string>
+    <string name="url">https://seochohi.com</string>
+    <string name="channel_name">서초하이 알림</string>
+    <string name="notification_channel_id">notification</string>
+    <string name="channel_description">서초하이 앱 알림입니다.</string>
+    <string name="download_complete">다운로드가 완료되었습니다. 터치하여 다운로드 폴더로 이동합니다.</string>
+    <string name="download_error">다운로드 도중 오류가 발생하였습니다.</string>
+    <string name="report_email">shs.startup@gmail.com</string>
+    <string name="goodbye_message_sub">서초하이 프로젝트는 1월 18일자로 종료되었습니다.</string>
+    <string name="goodbye_message">그동안 서초하이를 이용해주셔서 감사합니다.</string>
+</resources>

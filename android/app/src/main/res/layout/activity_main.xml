@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefreshlayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/splash_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/splashImage"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/icon" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/errorView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/errorphone"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/errorphone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/notosanskrbold"
+            android:gravity="center_horizontal"
+            android:text="@string/ERROR_TITLE_MESSAGE"
+            android:textColor="#000000"
+            android:textSize="20dp" />
+
+
+        <TextView
+            android:id="@+id/errormsg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskrmedium"
+            android:gravity="center"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="16dp" />
+
+        <Button
+            android:id="@+id/reloadBtn"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/notosanskrbold"
+            android:text="새로고침"
+            android:textColor="#1976d2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="#30000000"
+            app:strokeColor="#1976d2"
+            app:strokeWidth="1dp" />
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/windowError"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/errornotice"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/errornotice" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/notosanskrbold"
+            android:gravity="center_horizontal"
+            android:text="@string/WEBPAGE_ERROR"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/errorDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/notosanskrmedium"
+            android:gravity="center"
+            android:maxLines="3"
+            android:text=""
+            android:textColor="@color/black"
+            android:textSize="16dp"
+
+            />
+
+        <Button
+            android:id="@+id/reportError"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/notosanskrbold"
+            android:text="신고하기"
+            android:textColor="#1976d2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="#30000000"
+            app:strokeColor="#1976d2"
+            app:strokeWidth="1dp" />
+
+        <Button
+            android:id="@+id/reloadBtn2"
+            style="?attr/materialButtonOutlinedStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosanskrbold"
+            android:text="새로고침"
+            android:textColor="#1976d2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:rippleColor="#30000000"
+            app:strokeColor="#1976d2"
+            app:strokeWidth="1dp" />
+    </LinearLayout>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/goodBye"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerVertical="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/goodByeImage"
+            android:layout_width="120dp"
+            android:layout_height="150dp"
+            android:gravity="center_horizontal"
+            android:scaleType="fitCenter"
+            android:src="@drawable/goodbye" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/notosanskrbold"
+            android:gravity="center_horizontal"
+            android:text="@string/goodbye_message_sub"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/notosanskrbold"
+            android:gravity="center_horizontal"
+            android:text="@string/goodbye_message"
+            android:textColor="@color/black"
+            android:textSize="24dp" />
+    </LinearLayout>
+</RelativeLayout>

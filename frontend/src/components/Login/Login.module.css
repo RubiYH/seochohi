@@ -1,0 +1,60 @@
+.LoginForm {
+  position: relative;
+  display: flex;
+  min-width: 250px;
+  min-height: 450px;
+  margin: 0;
+  padding: 16px;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.header {
+  position: absolute;
+  top: 0;
+  text-align: center;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.description {
+  font-size: 0.8rem;
+}
+
+.form {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+}
+
+.moreoptions {
+  position: relative;
+  margin: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.moreoptions > span {
+  font-size: 0.7rem;
+  margin: 0px 1rem 0px 1rem;
+}
+
+.moreoptions > span > a {
+  color: #666666;
+  text-decoration: underline #000000;
+  transition: color 200ms ease-in-out;
+}
+
+.moreoptions > span > a:hover {
+  color: #000000;
+}

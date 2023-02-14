@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1"
+    />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <title>서초 하이</title>
+  </head>
+  <body>
+    <script>
+      const globalThis = self; //Android 9.0
+
+      window.onerror = (e, s, l, c) => {
+        let errDetails = { e, s, l, c };
+        if (window.Android) {
+          window.Android.windowOnError(JSON.stringify(errDetails));
+        }
+        return;
+      };
+
+      var navType = "menu";
+    </script>
+    <noscript>이 페이지를 보려면 자바스크립트를 켜주세요.</noscript>
+    <div id="root"></div>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+.container {
+  position: fixed;
+  right: 1rem;
+  bottom: 2rem;
+  z-index: 9999;
+}
+
+.card {
+  position: relative;
+  z-index: 9999;
+  max-width: 20rem;
+  min-width: 12rem;
+  height: auto;
+  padding: 16px;
+  border-radius: var(--paper-radius) !important;
+  background: #ffffff;
+  box-shadow: var(--paper-shadow) !important;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.popup_title {
+  font-size: 1.2rem;
+  padding-left: 8px;
+}
+
+.popup-enter {
+  opacity: 0;
+}
+
+.popup-enter-active {
+  opacity: 1;
+  transition: opacity 600ms;
+}
+
+.popup-exit {
+  opacity: 1;
+}
+
+.popup-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}

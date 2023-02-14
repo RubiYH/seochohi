@@ -1,0 +1,126 @@
+<configSchema>
+  <sectionSchema name="webFarms">
+    <collection addElement="webFarm">
+      <attribute name="name" type="string" required="true" isUniqueKey="true" validationType="siteName"/>
+      <attribute name="enabled" type="bool" defaultValue="true"/>
+      <attribute name="autoEnableAgent" type="bool" defaultValue="true" />
+      <attribute name="adminUserName" type="string" />
+      <attribute name="adminPassword" type="string" encrypted="true" defaultValue="[enc:AesProvider::enc]" />
+      <attribute name="minimumServers" type="int" defaultValue="0" />
+      <attribute name="agentUrl" type="string" defaultValue="http://{0}:8173/WEBFARMAGENTSERVICE/" />
+      <attribute name="restartServerOnConfigurationChange" type="bool" defaultValue="true" />
+      <attribute name="restartServerIfReady" type="bool" defaultValue="true" />
+      <attribute name="primaryServer" type="string" />
+      <attribute name="loadBalancerProvider" type="string" defaultValue="Arr" />
+      <attribute name="periodicRuntimeData" type="timeSpan" defaultValue="00:00:01" />
+      <attribute name="enableRuntimeData" type="bool" defaultValue="true" />
+      <attribute name="maximumStoppedServers" type="int" defaultValue="1" />
+      <attribute name="agentRetryTime" type="timeSpan" defaultValue="00:05:00" />
+      <attribute name="frontEndUrl" type="string" />
+      <element name="platformProvision">
+        <attribute name="stopOnInstall" type="bool" defaultValue="true" />
+        <attribute name="periodicSync" type="timeSpan" defaultValue="00:05:00" />
+        <attribute name="syncPlatformFromPrimary" type="bool" defaultValue="false" />
+        <attribute name="deepDependencyInstall" type="bool" defaultValue="false"/>
+        <attribute name="feedUrl" type="string" defaultValue="http://www.microsoft.com/web/webpi/3.0/WebproductList.xml" />
+        <element name="customFeeds">
+          <collection addElement="customFeed">
+            <attribute name="url" type="string" required="true" isUniqueKey="true"/>
+          </collection>
+        </element>
+        <collection addElement="platform">
+          <attribute name="productId" type="string" isUniqueKey="true" />
+        </collection>
+      </element>
+      <element name="applicationProvision">
+        <attribute name="offlineWhileSync" type="bool" defaultValue="true" />
+        <attribute name="syncWebServerFromPrimary" type="bool" defaultValue="false" />
+        <attribute name="periodicSync" type="timeSpan" defaultValue="00:00:30" />
+        <element name="skipDirectives">
+          <collection addElement="skip" clearElement="clear">
+            <attribute name="name" type="string" required="true" isUniqueKey="true"/>
+            <attribute name="enabled" type="bool" defaultValue="true"/>
+            <attribute name="skipDirective" type="string" required="true" validationType="nonEmptyString"/>
+          </collection>
+        </element>
+        <collection addElement="syncProvider" clearElement="clear">
+          <attribute name="providerName" type="string" required="true" validationType="nonEmptyString" />
+          <attribute name="path" type="string" required="true" validationType="nonEmptyString" />
+          <collection name="syncProviderSetting" addElement="add" removeElement="remove" clearElement="clear">
+            <attribute name="name" type="string" required="true" isUniqueKey="true"/>
+            <attribute name="value" type="string"/>
+          </collection>
+        </collection>
+      </element>
+      <element name="customProviderSettings">
+        <collection addElement="customProvider">
+          <attribute name="name" type="string" required="true" isUniqueKey="true" />
+          <collection addElement="setting">
+            <attribute name="name" type="string" required="true" isUniqueKey="true" />
+            <attribute name="value" type="string" required="true" />
+          </collection>
+        </collection>
+      </element>
+      <element name="runProviders">
+        <collection addElement="runProvider">
+          <attribute name="name" type="string" required="true" isUniqueKey="true"/>
+          <attribute name="friendlyName" type="string" />
+          <attribute name="description" type="string" />
+          <attribute name="commandToRun" type="string" required="true" />
+          <attribute name="runRemote" type="bool" defaultValue="true"/>
+          <attribute name="dependencies" type="string"/>
+          <attribute name="dependants" type="string"/>
+          <attribute name="retryAttempts" type="int" defaultValue="5" />
+          <attribute name="retryInterval" type="int" defaultValue="1000"/>
+          <attribute name="periodicRun" type="timeSpan" defaultValue="00:00:00"/>
+          <attribute name="scriptType" type="enum" defaultValue="command">
+            <enum name="command" value="0" />
+            <enum name="powershell" value="1"/>
+          </attribute>
+          <attribute name="operationType" type="enum" defaultValue="Server">
+            <enum name="Server" value="0" />
+            <enum name="Webfarm" value="1" />
+          </attribute>
+          <attribute name="disposition" type="flags">
+            <flag name="None" value="0"/>
+            <flag name="AllowMultipleCallers" value="1"/>
+            <flag name="StopOperation" value="2"/>
+            <flag name="AllowCrossServerCallers" value="4"/>
+            <flag name="DelegateTracing" value="8"/>
+            <flag name="StartOperation" value="16"/>
+            <flag name="IgnoreFailure" value="32"/>
+            <flag name="RuntimeDataProvider" value="64"/>
+            <flag name="Hidden" value="128"/>
+            <flag name="ServerOnly" value="256"/>
+          </attribute>
+          <collection addElement="parameter">
+            <attribute name="name" type="string" required="true" isUniqueKey="true"/>
+            <attribute name="type" type="string" required="true"/>
+            <attribute name="friendlyName" type="string"/>
+            <attribute name="description" type="string"/>
+            <attribute name="defaultValue" type="string"/>
+          </collection>
+        </collection>
+      </element>
+      <element name="autoRepair">
+        <attribute name="enabled" type="bool" defaultValue="true"/>
+        <attribute name="retryInterval" type="timeSpan" defaultValue="00:01:00"/>
+        <attribute name="retryAttempts" type="int" defaultValue="10"/>
+      </element>
+      <element name="defaultProxy">
+        <attribute name="enabled" type="bool" defaultValue="false"/>
+        <attribute name="proxyaddress" type="string" />
+        <attribute name="bypassOnLocal" type="bool" defaultValue="true"/>
+        <attribute name="userName" type="string"/>
+        <attribute name="password" type="string" encrypted="true" defaultValue="[enc:AesProvider::enc]"/>
+        <collection addElement="bypass">
+          <attribute name="address" type="string" required="true" isUniqueKey="true" validationType="nonEmptyString"/>
+        </collection>
+      </element>
+      <collection addElement="server">
+        <attribute name="address" type="string" required="true" isUniqueKey="true" validationType="nonEmptyString"/>
+        <attribute name="enabled" type="bool" defaultValue="true"/>
+      </collection>
+    </collection>
+  </sectionSchema>
+</configSchema>

@@ -1,0 +1,8 @@
+.memoInput {
+  width: calc(100% - 2rem);
+  height: 100%;
+  padding: 16px;
+  outline: none;
+  overflow: auto;
+  background: #f0eee9;
+}

@@ -1,0 +1,23 @@
+.banner-container {
+  position: relative;
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: var(--paper-radius) !important;
+  min-height: 8rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.banner-container > img {
+  position: absolute;
+  height: 100%;
+  object-fit: contain;
+}
+
+.banner-container span {
+  font-family: "Spoqa Han Sans Neo", "sans-serif";
+}

@@ -1,0 +1,15 @@
+.warningTitle {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--warning-color);
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.li {
+  text-align: left;
+  padding: 16px;
+}

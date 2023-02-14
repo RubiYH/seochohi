@@ -1,0 +1,39 @@
+.NoticeBoard {
+  position: relative;
+  display: flex;
+  min-height: 1rem;
+  line-height: 1rem;
+  padding: 16px;
+  align-items: center;
+  font-weight: 500;
+  border-radius: var(--paper-radius-sm) !important;
+  box-shadow: var(--paper-shadow) !important;
+}
+
+.notice-enter {
+  opacity: 0;
+}
+
+.notice-enter-active {
+  opacity: 1;
+  transition: opacity 600ms;
+}
+
+.notice-exit {
+  opacity: 1;
+}
+
+.notice-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+.NoticeBoard a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.NoticeBoard a:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}

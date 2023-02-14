@@ -1,0 +1,73 @@
+:root {
+  --timetable-today: 2px solid #40d033;
+}
+
+.timetable {
+  border-collapse: collapse;
+  text-align: center;
+  border: none;
+  width: 100%;
+  height: 100%;
+}
+
+.timetable td {
+  width: 4rem;
+  height: 4rem;
+  font-size: 1rem;
+  word-break: keep-all;
+}
+
+.todayTooltip {
+  display: block;
+  position: absolute;
+  width: calc(100% - 1rem);
+  top: -32px;
+  left: 0.5rem;
+  right: 0;
+  padding: 0.25rem 0 0.25rem 0;
+  box-shadow: var(--paper-shadow) !important;
+  border-radius: var(--paper-radius) !important;
+  background: var(--subject-tag-color);
+  color: #fff;
+}
+
+.tr_tt {
+  position: relative;
+}
+
+.tr_tt[data-istoday="true"] {
+  border-left: var(--timetable-today);
+  border-right: var(--timetable-today);
+}
+
+.timetable tr:first-child > td[data-istoday="true"] {
+  border-top: var(--timetable-today);
+}
+
+.timetable tr:last-child > td[data-istoday="true"] {
+  border-bottom: var(--timetable-today);
+}
+
+@media only screen and (max-width: 455px) {
+  .timetable td {
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media only screen and (max-width: 410px) {
+  .timetable td {
+    width: 3rem;
+    height: 3rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .timetable td {
+    width: 4rem;
+    height: 3.5rem;
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,33 @@
+:root {
+  /* Sizing */
+  --paper-radius: 32px;
+  --paper-radius-sm: 16px;
+  --modal-radius: 24px;
+  --paper-height: 300px;
+  --wrapper-height: calc(100% - 64px);
+  --app-min-width: 300px;
+  --sidebar-width: 14rem;
+  --list-box-radius: 32px;
+  --event-box-radius: 18px;
+
+  /* Shadows */
+  --paper-shadow: rgba(0, 0, 0, 0.08) 0px 4px 12px;
+  --paper-shadow-sl: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
+    rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+  --list-box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+  /* Colors */
+  --primary-color: #90caf9;
+  --app-background-color: #fff;
+  --color-disabled: #777777;
+  --highlight-user: #3d5afe;
+  --warning-color: #d32f2f;
+  --link-color: #1769aa;
+  --link-color-r: #1769aa;
+  --subject-tag-color: #40d033;
+  --others-tag-color: #8561c5;
+  --custom-tag-color: #ed4b82;
+  --forest-tag-color: #3d5afe;
+  --highlight-exam: #757de8;
+  /* --sidebar-current: green; */
+}
