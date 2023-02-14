@@ -1,4 +1,4 @@
-### [호스팅]
+## [호스팅]
 
 > - ## 도메인: [가비아](https://gabia.com)
 >   seochohi.com, api.seochohi.com 도메인 등록

@@ -1,10 +1,10 @@
-<img align="left" src="./icons/playstore_icon.png" width="120" title="서초하이 플레이스토어 아이콘" alt="" >
+<img align="left" src="./icons/playstore_icon.png" width="125" title="서초하이 플레이스토어 아이콘" alt="" >
 
-##### [플레이스토어 앱 출시]
+#### [플레이스토어 앱 출시]
 
 # 서초하이! for 서초고등학교
 
-#### 서초고등학교 학생들의 편리한 학교생활을 위한 웹 애플리케이션
+### 서초고등학교 학생들의 편리한 학교생활을 위한 웹 애플리케이션
 
 ---
 
