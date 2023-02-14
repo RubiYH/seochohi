@@ -4,16 +4,21 @@
 >   백엔드 서버를 구현하는 자바스크립트 런타임
 > - ## [Express](https://expressjs.com/ko)
 >   Node.js용 웹 프레임워크
->   REST API 서버 구현
+
+> REST API 서버 구현
+>
 > - ## MySQL
 >   유저 개인정보, 반 시간표, 로그인 세션, 게시글 등 여러 데이터를 관리하는 데이터베이스
->   [Node.js와 연동](https://github.com/sidorares/node-mysql2)하여 백엔드 서버와 통신
+
+> [Node.js와 연동](https://github.com/sidorares/node-mysql2)하여 백엔드 서버와 통신
 
 - 기타 사용된 주요 라이브러리
 
 > - ## [JSON Web Token(JWT)](https://github.com/auth0/node-jsonwebtoken)
 >   토큰 인증 기반의 로그인 시스템 구현
->   세션 시스템과 결합하여 사용자 인증 및 새로운 환경에서의 로그인 차단
+
+> 세션 시스템과 결합하여 사용자 인증 및 새로운 환경에서의 로그인 차단
+>
 > - ## [CORS](https://expressjs.com/en/resources/middleware/cors.html)
 >   CORS(교차 출처 리소스 공유) 핸들링
 > - ## [Crypto](https://nodejs.org/api/crypto.html), [crypto-js](https://github.com/brix/crypto-js)
