@@ -22,6 +22,12 @@
 
 <img src="./assets/preview.png" width="60%" title="주요 기능 소개" alt="주요 기능 소개 이미지" />
 
+### [스크린샷]
+
+- #### [라이트 모드](./assets/screenshots/light)
+
+- #### [다크 모드](/.assets/screenshots/dark)
+
 ---
 
 ### [프론트엔드]
