@@ -11,9 +11,7 @@ export default function MobileIframe(props) {
     <div className={styles.iframe}>
       {!useIframe && (
         <>
-          <h2>
-            현재 PC 및 태블릿은 지원하지 않습니다. 모바일에서 접속해주세요.
-          </h2>
+          <h2>현재 PC 및 태블릿은 지원하지 않습니다. 모바일에서 접속해주세요.</h2>
           {/* <p>또는 모바일 뷰를 체험해보세요!</p>
           <Button
             variant="contained"

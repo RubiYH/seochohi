@@ -1,13 +1,10 @@
-import { useMediaQuery } from "react-responsive";
-import { MediaQuery } from "../../Modules/MediaQuery";
-import styles from "./MyClassTimeTable.module.css";
-
 import axios from "axios";
 import { useEffect, useState } from "react";
 import settings from "../../../settings";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
 import Navbar from "../../Modules/Navbar/Navbar";
+import styles from "./MyClassTimeTable.module.css";
 import TimeTable from "./TimeTable";
 
 export default function MyClassTimeTable(props) {
@@ -29,11 +26,6 @@ export default function MyClassTimeTable(props) {
       }
     });
   }, []);
-
-  //responsive : PC
-  const isDesktopOrLaptop = useMediaQuery({
-    query: MediaQuery("PC"),
-  });
 
   const [timetable, setTimetable] = useState(null);
 
@@ -72,8 +64,7 @@ export default function MyClassTimeTable(props) {
             <div className="content center column">
               <h2>
                 {String(userData.userID).charAt(0) || "?"}학년{" "}
-                {parseInt(String(userData.userID).substring(1, 3)) || "?"}반
-                시간표
+                {parseInt(String(userData.userID).substring(1, 3)) || "?"}반 시간표
               </h2>
               <br />
               {timetable && <TimeTable data={timetable} tooltip={true} />}

@@ -31,73 +31,69 @@ module.exports = function (app) {
             });
             console.log(err);
             return;
+          }
+
+          let getComments = JSON.parse(results[0].Comments);
+
+          let index = getComments.findIndex(
+            (c) =>
+              c.userID === parseInt(userID) && c.username === username && c.commentID === commentID
+          );
+
+          if (index >= 0) {
+            getComments.splice(index, 1);
           } else {
-            let getComments = JSON.parse(results[0].Comments);
+            res.json({
+              status: "error",
+              message: "권한이 없습니다.",
+            });
+            return;
+          }
 
-            let index = getComments.findIndex(
-              (c) =>
-                c.userID === parseInt(userID) &&
-                c.username === username &&
-                c.commentID === commentID
-            );
+          connection.query(
+            `UPDATE \`${table}\` SET \`Comments\`=${connection.escape(
+              JSON.stringify(getComments)
+            )} WHERE \`PostID\`=${connection.escape(pid)} AND \`UserID\`=${connection.escape(uid)}`,
+            (err, results, fields) => {
+              if (err) {
+                res.json({
+                  status: "error",
+                  message: err.code || null,
+                  fatal: err.fatal || null,
+                });
+                console.log(err);
+                return;
+              }
 
-            if (index >= 0) {
-              getComments.splice(index, 1);
-            } else {
-              res.json({
-                status: "error",
-                message: "권한이 없습니다.",
-              });
-              return;
-            }
+              connection.query(
+                `UPDATE \`${table}\` SET \`total_comments\`=\`total_comments\` - 1 WHERE \`PostID\`=${connection.escape(
+                  pid
+                )} AND \`UserID\`=${connection.escape(uid)}`,
+                (err, results, fields) => {
+                  if (err) {
+                    res.json({
+                      status: "error",
+                      message: err.code || null,
+                      fatal: err.fatal || null,
+                    });
+                    console.log(err);
+                    return;
+                  }
 
-            connection.query(
-              `UPDATE \`${table}\` SET \`Comments\`=${connection.escape(
-                JSON.stringify(getComments)
-              )} WHERE \`PostID\`=${connection.escape(
-                pid
-              )} AND \`UserID\`=${connection.escape(uid)}`,
-              (err, results, fields) => {
-                if (err) {
-                  res.json({
-                    status: "error",
-                    message: err.code || null,
-                    fatal: err.fatal || null,
+                  res.status(200).json({
+                    status: "success",
+                    message: "댓글을 삭제하였습니다.",
                   });
-                  console.log(err);
-                  return;
-                } else {
-                  connection.query(
-                    `UPDATE \`${table}\` SET \`total_comments\`=\`total_comments\` - 1 WHERE \`PostID\`=${connection.escape(
-                      pid
-                    )} AND \`UserID\`=${connection.escape(uid)}`,
-                    (err, results, fields) => {
-                      if (err) {
-                        res.json({
-                          status: "error",
-                          message: err.code || null,
-                          fatal: err.fatal || null,
-                        });
-                        console.log(err);
-                        return;
-                      } else {
-                        res.status(200).json({
-                          status: "success",
-                          message: "댓글을 삭제하였습니다.",
-                        });
 
-                        console.log(
-                          `[${
-                            req.getIP
-                          }] ${userID} ${username} : [${table.toUpperCase()}/${pid}/${uid}] 댓글을 삭제하였습니다.`
-                        );
-                      }
-                    }
+                  console.log(
+                    `[${
+                      req.getIP
+                    }] ${userID} ${username} : [${table.toUpperCase()}/${pid}/${uid}] 댓글을 삭제하였습니다.`
                   );
                 }
-              }
-            );
-          }
+              );
+            }
+          );
         }
       );
     });

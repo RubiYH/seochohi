@@ -1,11 +1,4 @@
-import {
-  Box,
-  FormControl,
-  FormLabel,
-  MenuItem,
-  Select,
-  TextField,
-} from "@mui/material";
+import { Box, FormControl, FormLabel, MenuItem, Select, TextField } from "@mui/material";
 import { useEffect } from "react";
 import { maxLengthCheck } from "../../Modules/maxLengthCheck";
 import styles from "../Register.module.css";

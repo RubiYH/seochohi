@@ -2,19 +2,7 @@ import { Button, FormControlLabel, Radio, RadioGroup } from "@mui/material";
 import styles from "./VerifyLogin.module.css";
 
 export default function ChooseVerify(props) {
-  const {
-    email,
-    setEmail,
-    username,
-    setUsername,
-    phone,
-    setPhone,
-    Type,
-    setType,
-    showComp,
-    setComp,
-    continueVerify,
-  } = props.data;
+  const { email, username, phone, Type, setType, setComp, continueVerify } = props.data;
 
   return (
     <>
@@ -36,10 +24,7 @@ export default function ChooseVerify(props) {
               : `(${email?.ID?.substring(0, 1).padEnd(
                   email?.ID?.length,
                   "*"
-                )}@${email?.Domain?.substring(0, 2).padEnd(
-                  email?.Domain?.length,
-                  "*"
-                )})`
+                )}@${email?.Domain?.substring(0, 2).padEnd(email?.Domain?.length, "*")})`
           }로 인증 코드를 전송합니다.`}
           disabled={!email || email?.raw === "null"}
           onChange={(e) => {
@@ -52,9 +37,7 @@ export default function ChooseVerify(props) {
           value="byPhone"
           control={<Radio />}
           label={`${username}님의 휴대전화${
-            phone === "null"
-              ? ""
-              : `(${phone?.slice(-4).padStart(phone?.length, "*")})`
+            phone === "null" ? "" : `(${phone?.slice(-4).padStart(phone?.length, "*")})`
           }로 인증 코드를 전송합니다.`}
           disabled={phone === "null"}
           onChange={(e) => {
@@ -76,11 +59,7 @@ export default function ChooseVerify(props) {
         />
       </RadioGroup>
       <br />
-      <Button
-        variant="contained"
-        color="info"
-        onClick={() => continueVerify(setComp(Type))}
-      >
+      <Button variant="contained" color="info" onClick={() => continueVerify(setComp(Type))}>
         인증
       </Button>
     </>

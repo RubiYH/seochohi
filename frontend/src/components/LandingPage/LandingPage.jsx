@@ -1,12 +1,11 @@
 import { Button, CircularProgress } from "@mui/material";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Home from "../Home/Home";
 import { checkSession } from "../Modules/Authorization/checkSession";
 import styles from "./LandingPage.module.css";
-
-import Aos from "aos";
-import "aos/dist/aos.css";
 
 import exams from "./exams.png";
 import forest from "./forest.png";

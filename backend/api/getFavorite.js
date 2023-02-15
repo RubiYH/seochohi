@@ -1,13 +1,19 @@
-const authJWT = require("../Middlewares/authJWT");
 const { getConnection } = require("./Modules/connectToMysql");
+const getTable = require("./Modules/getTable");
 
 module.exports = function (app) {
-  app.get("/api/getSession", authJWT, async function (req, res) {
-    const userID = (await req?.userID) || null;
+  app.get("/api/getfavorites", async function (req, res) {
+    const query = await req.query;
+
+    let userID = query?.userID || null;
+    let username = query?.username || null;
+    let table = getTable(query?.table) || null;
 
     getConnection((connection) => {
       connection.query(
-        `SELECT \`Session\` FROM \`users\` WHERE \`ID\`=${connection.escape(userID)}`,
+        `SELECT \`Favorites\` FROM \`users\` WHERE \`ID\`=${connection.escape(
+          userID
+        )} AND \`Username\`=${connection.escape(username)}`,
         (err, results, fields) => {
           if (err) {
             res.json({
@@ -15,16 +21,13 @@ module.exports = function (app) {
               message: err.code || null,
               fatal: err.fatal || null,
             });
-
             console.log(err);
             return;
           }
 
-          let Session = results[0]?.Session;
-
           res.status(200).json({
             status: "success",
-            Session: Session,
+            list: JSON.parse(results[0].Favorites).filter((f) => f.table === table),
           });
         }
       );

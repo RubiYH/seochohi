@@ -1,27 +1,11 @@
-import {
-  Box,
-  Button,
-  Card,
-  Fade,
-  Grid,
-  Modal,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, Fade, Grid, Modal, Typography } from "@mui/material";
 import { format } from "date-fns";
 import { useState } from "react";
 import confirmLogout from "../Modules/confirmLogout";
 import styles from "../Settings.module.css";
 
 export default function AccountMain(props) {
-  const {
-    userInfo,
-    InfoSpan,
-    userData,
-    EditSpan,
-    SettingLayout,
-    menu,
-    setMenu,
-  } = props?.data;
+  const { userInfo, InfoSpan, userData, SettingLayout, setMenu } = props?.data;
 
   //modal
   const [open, setOpen] = useState(false);
@@ -81,10 +65,7 @@ export default function AccountMain(props) {
                     <div className={`${styles.infoRow} ${styles.value}`}>
                       <span>
                         {userInfo?.CreatedAt &&
-                          format(
-                            new Date(userInfo?.CreatedAt),
-                            "yyyy년 MM월 dd일"
-                          )}
+                          format(new Date(userInfo?.CreatedAt), "yyyy년 MM월 dd일")}
                       </span>
                     </div>
                   </td>
@@ -118,11 +99,7 @@ export default function AccountMain(props) {
                   </td>
                   <td>
                     <div className={`${styles.infoRow} ${styles.value}`}>
-                      <Button
-                        variant="contained"
-                        disableElevation
-                        onClick={() => changePassword()}
-                      >
+                      <Button variant="contained" disableElevation onClick={() => changePassword()}>
                         비밀번호 변경
                       </Button>
                     </div>
@@ -152,12 +129,7 @@ export default function AccountMain(props) {
         </Grid>
       </Grid>
       <div className={styles.logoutArea}>
-        <Button
-          variant="contained"
-          color="error"
-          disableElevation
-          onClick={Logout}
-        >
+        <Button variant="contained" color="error" disableElevation onClick={Logout}>
           로그아웃
         </Button>
         <Modal open={open} onClose={handleClose} closeAfterTransition>

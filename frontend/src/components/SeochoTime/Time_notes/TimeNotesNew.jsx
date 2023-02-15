@@ -1,3 +1,4 @@
+import { Add, AddCircle, Delete } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -10,20 +11,17 @@ import {
   TextField,
 } from "@mui/material";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import ImageUploading from "react-images-uploading";
 import settings from "../../../settings";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
 import { maxLengthCheck } from "../../Modules/maxLengthCheck";
-import BeforePost from "./TimeNotesBeforePost";
-import styles from "./TimeNotesNew.module.css";
-
-import { Add, AddCircle, Delete } from "@mui/icons-material";
-import { useRef } from "react";
-import ImageUploading from "react-images-uploading";
 import Navbar from "../../Modules/Navbar/Navbar";
 import { HandleResponse } from "../../Modules/ResponseCode";
 import { tags_others, tags_subject } from "./tags";
+import BeforePost from "./TimeNotesBeforePost";
+import styles from "./TimeNotesNew.module.css";
 
 export default function TimeNotesNew(props) {
   //JWT 인증
@@ -50,7 +48,7 @@ export default function TimeNotesNew(props) {
 
   //upload images
 
-  const onImageChange = (imageList, addUpdateIndex) => {
+  const onImageChange = (imageList) => {
     // data for submit
     setImages(imageList);
   };
@@ -91,15 +89,12 @@ export default function TimeNotesNew(props) {
   const [selectedTags_subject, setST_subject] = useState([]);
 
   const AddTag_subject = (grade, index) => {
-    if (selectedTags_subject.some((s) => s === tags_subject[grade - 1][index]))
-      return;
+    if (selectedTags_subject.some((s) => s === tags_subject[grade - 1][index])) return;
     setST_subject([...selectedTags_subject, tags_subject[grade - 1][index]]);
   };
 
   const deleteTag_subject = (grade, index) => {
-    const getIndex = selectedTags_subject.findIndex(
-      (s) => s === tags_subject[grade - 1][index]
-    );
+    const getIndex = selectedTags_subject.findIndex((s) => s === tags_subject[grade - 1][index]);
     setST_subject(selectedTags_subject.filter((s, i) => i !== getIndex));
   };
 
@@ -112,9 +107,7 @@ export default function TimeNotesNew(props) {
   };
 
   const deleteTag_others = (index) => {
-    const getIndex = selectedTags_others.findIndex(
-      (s) => s === tags_others[index]
-    );
+    const getIndex = selectedTags_others.findIndex((s) => s === tags_others[index]);
     setST_others(selectedTags_others.filter((s, i) => i !== getIndex));
   };
 
@@ -141,12 +134,7 @@ export default function TimeNotesNew(props) {
       alert("필기 사진을 한 장 이상 업로드해주세요.");
       setCanSubmit(true);
       return;
-    } else if (
-      selectedTags_subject.length +
-        selectedTags_others.length +
-        customTag.length <
-      1
-    ) {
+    } else if (selectedTags_subject.length + selectedTags_others.length + customTag.length < 1) {
       alert("태그를 하나 이상 선택해주세요.");
       setCanSubmit(true);
       return;
@@ -233,23 +221,10 @@ export default function TimeNotesNew(props) {
               acceptType={["jpg", "jpeg", "png"]}
               maxFileSize={maxFileSize}
             >
-              {({
-                imageList,
-                onImageUpload,
-                onImageRemoveAll,
-                onImageUpdate,
-                onImageRemove,
-                errors,
-              }) => (
+              {({ imageList, onImageUpload, onImageRemove, errors }) => (
                 <>
-                  <span
-                    className={styles.title}
-                    style={{ flexDirection: "column" }}
-                  >
-                    <div
-                      className={styles.title}
-                      style={{ alignItems: "center" }}
-                    >
+                  <span className={styles.title} style={{ flexDirection: "column" }}>
+                    <div className={styles.title} style={{ alignItems: "center" }}>
                       이미지 업로드 (최대 10장)
                       <IconButton onClick={onImageUpload}>
                         <Add />
@@ -260,13 +235,9 @@ export default function TimeNotesNew(props) {
                   {errors && (
                     <div>
                       {errors.maxNumber && (
-                        <span>
-                          이미지는 최대 10장까지만 업로드할 수 있습니다.
-                        </span>
+                        <span>이미지는 최대 10장까지만 업로드할 수 있습니다.</span>
                       )}
-                      {errors.acceptType && (
-                        <span>지원되지 않는 파일 형식입니다</span>
-                      )}
+                      {errors.acceptType && <span>지원되지 않는 파일 형식입니다</span>}
                       {errors.maxFileSize && (
                         <span>
                           파일 크키가 너무 큽니다. (최대 {maxFileSize / 1000000}
@@ -278,11 +249,7 @@ export default function TimeNotesNew(props) {
                   <div className={styles.imageList}>
                     {imageList.map((image, index) => (
                       <div className={styles.imageArray_wrapper} key={index}>
-                        <img
-                          src={image["data_url"]}
-                          alt=""
-                          className={styles.imageArray}
-                        />
+                        <img src={image["data_url"]} alt="" className={styles.imageArray} />
                         <span
                           style={{
                             display: "flex",
@@ -305,9 +272,7 @@ export default function TimeNotesNew(props) {
             <br />
             <span>태그 (1개 이상)</span>
             <div className={styles.Select_tagsSubject}>
-              <FormGroup
-                sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}
-              >
+              <FormGroup sx={{ display: "flex", flexDirection: "row", flexWrap: "wrap" }}>
                 {tags_subject[grade - 1]?.map((t, i) => (
                   <FormControlLabel
                     key={i}

@@ -1,4 +1,3 @@
-const { config } = require("../config");
 const { getConnection } = require("./Modules/connectToMysql");
 const getTable = require("./Modules/getTable");
 const authJWT = require("../Middlewares/authJWT");
@@ -11,19 +10,14 @@ module.exports = function (app) {
       let table = query.table?.toLowerCase() || null;
       let count = query.c || null;
       let orderType = connection.escape(query.orderBy) || null;
-      let content =
-        query.query === undefined
-          ? null
-          : connection.escape(query.query?.trim());
+      let content = query.query === undefined ? null : connection.escape(query.query?.trim());
       let lastPosition = query.lastPosition || 0;
       let userID = (await connection.escape(req?.userID)) || null;
       let username = (await connection.escape(req?.username)) || null;
 
       let finalQuery = "";
 
-      let limiting = `LIMIT ${
-        parseInt(lastPosition) + parseInt(count)
-      },${count}`;
+      let limiting = `LIMIT ${parseInt(lastPosition) + parseInt(count)},${count}`;
 
       let orderBy;
       switch (orderType) {
@@ -51,9 +45,7 @@ module.exports = function (app) {
 
       //전체 or 주제별로
       if (table === "all") {
-        type = `(${select("s1")}) UNION ALL (${select(
-          "s2"
-        )}) UNION ALL (${select("s3")})`;
+        type = `(${select("s1")}) UNION ALL (${select("s2")}) UNION ALL (${select("s3")})`;
       } else {
         type = select(getTable(table));
       }
@@ -88,48 +80,37 @@ module.exports = function (app) {
 
           console.log(err);
           return;
-        } else {
-          //who_liked 리스트를 true false로 전환 & Views 삭제
+        }
+        //who_liked 리스트를 true false로 전환 & Views 삭제
 
-          let resultModified = results;
+        let resultModified = results;
 
-          for (var i in resultModified) {
-            const whoLiked = JSON.parse(resultModified[i].who_liked);
+        for (var i in resultModified) {
+          const whoLiked = JSON.parse(resultModified[i].who_liked);
 
-            if (
-              whoLiked.some(
-                (s) =>
-                  parseInt(s.userID) === parseInt(userID) &&
-                  s.username === username
-              )
-            ) {
-              resultModified[i].who_liked = true;
-            } else {
-              resultModified[i].who_liked = false;
-            }
-
-            resultModified[i].Views = null;
-
-            if (resultModified[i].Content.length > 30) {
-              resultModified[i].Content = `${resultModified[i].Content.slice(
-                0,
-                30
-              )}...`;
-            }
-
-            //이름 및 학번 가리기
-
-            resultModified[i].Username = resultModified[i].Username.slice(
-              0,
-              1
-            ).padEnd(3, "*");
+          if (
+            whoLiked.some((s) => parseInt(s.userID) === parseInt(userID) && s.username === username)
+          ) {
+            resultModified[i].who_liked = true;
+          } else {
+            resultModified[i].who_liked = false;
           }
 
-          res.status(200).json({
-            status: "success",
-            data: resultModified,
-          });
+          resultModified[i].Views = null;
+
+          if (resultModified[i].Content.length > 30) {
+            resultModified[i].Content = `${resultModified[i].Content.slice(0, 30)}...`;
+          }
+
+          //이름 및 학번 가리기
+
+          resultModified[i].Username = resultModified[i].Username.slice(0, 1).padEnd(3, "*");
         }
+
+        res.status(200).json({
+          status: "success",
+          data: resultModified,
+        });
       });
     });
   });

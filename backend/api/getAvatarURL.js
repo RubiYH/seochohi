@@ -8,9 +8,7 @@ module.exports = function (app) {
 
     getConnection((connection) => {
       connection.query(
-        `SELECT \`AvatarURL\` FROM \`users\` WHERE \`ID\`=${connection.escape(
-          userID
-        )}`,
+        `SELECT \`AvatarURL\` FROM \`users\` WHERE \`ID\`=${connection.escape(userID)}`,
         (err, results, field) => {
           if (err) {
             res.json({
@@ -21,17 +19,17 @@ module.exports = function (app) {
 
             console.log(err);
             return;
+          }
+
+          if (results.length > 0) {
+            res.status(200).json({
+              status: "success",
+              url: results[0].AvatarURL,
+            });
           } else {
-            if (results.length > 0) {
-              res.status(200).json({
-                status: "success",
-                url: results[0].AvatarURL,
-              });
-            } else {
-              res.status(200).json({
-                status: "error",
-              });
-            }
+            res.status(200).json({
+              status: "error",
+            });
           }
         }
       );

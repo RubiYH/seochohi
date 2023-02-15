@@ -42,10 +42,7 @@ export default function TimeTable(props) {
       className={styles.timetable}
       style={{
         ...props?.style,
-        background:
-          localStorage.getItem("theme") === "dark"
-            ? "rgba(255, 255, 255, 0.12)"
-            : null,
+        background: localStorage.getItem("theme") === "dark" ? "rgba(255, 255, 255, 0.12)" : null,
       }}
     >
       <tbody>

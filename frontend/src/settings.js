@@ -6,12 +6,12 @@ const settings = {
     domain: process.env.REACT_APP_DOMAIN, //axios 서버 주소
   },
   style: {
-    primaryColor: "#ffffff", //"#43a047" -> 네비바
+    primaryColor: "#ffffff",
     darkColor: "#121212",
     textColor: "#000000",
   },
   server: {
-    Maintenance_Mode: false, //maintenance
+    Maintenance_Mode: false,
     Banner: false,
     BottomPopup: false,
   },

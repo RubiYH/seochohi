@@ -9,8 +9,7 @@ export default function GeneralSettings(props) {
     query: MediaQuery("Setting"),
   });
 
-  const { setTheme, Theme, setTT, ThemeType, lightTheme, darkTheme } =
-    props?.data;
+  const { setTT, ThemeType } = props?.data;
 
   return (
     <Grid container rowSpacing={2} spacing={2}>

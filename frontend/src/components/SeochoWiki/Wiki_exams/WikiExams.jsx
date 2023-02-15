@@ -1,8 +1,3 @@
-import * as React from "react";
-import { useMediaQuery } from "react-responsive";
-import { MediaQuery } from "../../Modules/MediaQuery";
-import styles from "./WikiExams.module.css";
-
 import {
   Accordion,
   AccordionDetails,
@@ -22,27 +17,27 @@ import {
   RadioGroup,
   Snackbar,
 } from "@mui/material";
-import { useState } from "react";
-
 import MuiAlert from "@mui/material/Alert";
+import * as React from "react";
+import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { MediaQuery } from "../../Modules/MediaQuery";
+import styles from "./WikiExams.module.css";
 
 //icons
-import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
-
 import { ExpandMore } from "@mui/icons-material";
+import PictureAsPdfIcon from "@mui/icons-material/PictureAsPdf";
 import axios from "axios";
 import { useEffect } from "react";
 import settings from "../../../settings";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
 import Navbar from "../../Modules/Navbar/Navbar";
+
 const domain = settings.api.domain;
 
 //과목 목록
-// import { Subjects } from "../../../../../../seochohi_server/files/Subjects";
 let Subjects;
-
-// import * as _ from "lodash";
 
 const Alert = React.forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -86,7 +81,6 @@ export default function WikiExams(props) {
       .get(`${domain}/api/getsubjects`)
       .then((res) => {
         Subjects = res.data.data;
-        // console.log(Subjects);
       })
       .catch((err) => {
         handleApiError({
@@ -140,8 +134,7 @@ export default function WikiExams(props) {
 
   const GradeIsChecked = Object.values(grade).some((k) => k === true);
 
-  const canLoadSubjects =
-    GradeIsChecked === true && isApiError.error === true ? false : true;
+  const canLoadSubjects = GradeIsChecked === true && isApiError.error === true ? false : true;
 
   //과목 선택 저장
   const [subject, setSubject] = useState({});
@@ -178,9 +171,7 @@ export default function WikiExams(props) {
       ? setSemester({ ...semester, [e.target.name]: e.target.value })
       : deleteSemester(e);
 
-    e.target.checked
-      ? setSemesterCount(semesterCount + 1)
-      : setSemesterCount(semesterCount - 1);
+    e.target.checked ? setSemesterCount(semesterCount + 1) : setSemesterCount(semesterCount - 1);
   };
 
   const deleteSemester = (e) => {
@@ -197,8 +188,6 @@ export default function WikiExams(props) {
   const [onLoad, setOnLoad] = useState(false);
 
   const searchExams = (grade, subject, semester) => {
-    // console.log(grade, subject, semester);
-
     let gradeN = Object.keys(grade).find((key) => grade[key] === true);
 
     let gradenumber;
@@ -229,7 +218,6 @@ export default function WikiExams(props) {
               case "success":
                 setOnLoad(false);
                 setDownloadList(res.data);
-                // console.log(res.data);
                 break;
               case "unauthorized":
                 setDownloadList({ filelist: [] });
@@ -247,7 +235,6 @@ export default function WikiExams(props) {
               default:
                 setOnLoad(false);
                 setDownloadList({ filelist: [] });
-                // console.log(res.data.status);
                 break;
             }
             break;
@@ -278,7 +265,6 @@ export default function WikiExams(props) {
   getPeriod.set("f", "기말");
 
   //a, p, ap => 정답, 문제, 문제 및 정답
-
   let getExamType = new Map();
   getExamType.set("a", "정답");
   getExamType.set("p", "문제");
@@ -286,8 +272,6 @@ export default function WikiExams(props) {
 
   //기출 다운로드
   function downloadExamFiles(d, type) {
-    // console.log(DownloadList.fileinfo);
-
     let fileredFileInfo = DownloadList.fileinfo.filter(
       (f) =>
         f.grade === d.grade &&
@@ -297,8 +281,6 @@ export default function WikiExams(props) {
         f.subject === d.subject &&
         f.type === type
     );
-
-    // console.log(fileredFileInfo);
 
     for (var i = 0; i < fileredFileInfo.length; i++) {
       let name = fileredFileInfo[i].name;
@@ -391,10 +373,7 @@ export default function WikiExams(props) {
             className="wrapper"
             style={{ display: isDesktopOrLaptop ? "inline-block" : "block" }}
           >
-            <div
-              className="content"
-              style={{ flexDirection: "column", alignItems: "center" }}
-            >
+            <div className="content" style={{ flexDirection: "column", alignItems: "center" }}>
               <div className={styles.frame}>
                 <Card className={styles.section_select}>
                   <div className={styles.selectGrade}>
@@ -427,11 +406,7 @@ export default function WikiExams(props) {
                     <FormControl>
                       <FormLabel>과목</FormLabel>
                       {/* 과목 */}
-                      {!GradeIsChecked && (
-                        <span style={{ color: "#777" }}>
-                          학년을 선택하세요.
-                        </span>
-                      )}
+                      {!GradeIsChecked && <span style={{ color: "#777" }}>학년을 선택하세요.</span>}
                       {/* 과목 불러오기 오류 */}
                       {!canLoadSubjects && (
                         <span style={{ color: "#d32f2f" }}>
@@ -549,15 +524,7 @@ export default function WikiExams(props) {
                               <td style={{ width: "10%" }}>학년</td>
                               <td style={{ width: "10%" }}>학기</td>
                               <td style={{ width: "10%" }}>종류</td>
-                              <td
-                                style={
-                                  isMobile
-                                    ? { width: "2rem" }
-                                    : { width: "10%" }
-                                }
-                              >
-                                과목
-                              </td>
+                              <td style={isMobile ? { width: "2rem" } : { width: "10%" }}>과목</td>
                               {!isTinyMobile && (
                                 <td style={{ width: "20%" }} colSpan="2">
                                   다운로드
@@ -613,22 +580,14 @@ export default function WikiExams(props) {
                                         : "기말"
                                       : "N/A"}
                                   </td>
-                                  <td className={styles.dlSubject}>
-                                    {d.subject}
-                                  </td>
+                                  <td className={styles.dlSubject}>{d.subject}</td>
 
                                   {has(d, "p") && (
                                     <td className={styles.dlTab}>
                                       <div>
                                         <span>문제</span>
-                                        <IconButton
-                                          onClick={() =>
-                                            downloadExamFiles(d, "p")
-                                          }
-                                        >
-                                          <PictureAsPdfIcon
-                                            className={styles.dlPDF}
-                                          />
+                                        <IconButton onClick={() => downloadExamFiles(d, "p")}>
+                                          <PictureAsPdfIcon className={styles.dlPDF} />
                                         </IconButton>
                                       </div>
                                     </td>
@@ -638,14 +597,8 @@ export default function WikiExams(props) {
                                     <td className={styles.dlTab}>
                                       <div>
                                         <span>정답</span>
-                                        <IconButton
-                                          onClick={() =>
-                                            downloadExamFiles(d, "a")
-                                          }
-                                        >
-                                          <PictureAsPdfIcon
-                                            className={styles.dlPDF}
-                                          />
+                                        <IconButton onClick={() => downloadExamFiles(d, "a")}>
+                                          <PictureAsPdfIcon className={styles.dlPDF} />
                                         </IconButton>
                                       </div>
                                     </td>
@@ -654,17 +607,9 @@ export default function WikiExams(props) {
                                   {has(d, "ap") && (
                                     <td colSpan="2" className={styles.dlTab}>
                                       <div>
-                                        <span style={{ fontSize: "0.7rem" }}>
-                                          문제 및 정답
-                                        </span>
-                                        <IconButton
-                                          onClick={() =>
-                                            downloadExamFiles(d, "ap")
-                                          }
-                                        >
-                                          <PictureAsPdfIcon
-                                            className={styles.dlPDF}
-                                          />
+                                        <span style={{ fontSize: "0.7rem" }}>문제 및 정답</span>
+                                        <IconButton onClick={() => downloadExamFiles(d, "ap")}>
+                                          <PictureAsPdfIcon className={styles.dlPDF} />
                                         </IconButton>
                                       </div>
                                     </td>
@@ -689,10 +634,7 @@ export default function WikiExams(props) {
                           )}
                           {DownloadList?.status === "empty" ? (
                             <tr>
-                              <td
-                                colSpan="6"
-                                style={{ padding: "1rem", lineHeight: "4rem" }}
-                              >
+                              <td colSpan="6" style={{ padding: "1rem", lineHeight: "4rem" }}>
                                 항목이 없습니다.
                               </td>
                             </tr>
@@ -709,12 +651,8 @@ export default function WikiExams(props) {
                                         justifyContent: "center",
                                       }}
                                     >
-                                      <AccordionSummary
-                                        expandIcon={<ExpandMore />}
-                                      >
-                                        {`${d.year}년 ${d.grade}학년 ${
-                                          d.semester
-                                        }학기 ${
+                                      <AccordionSummary expandIcon={<ExpandMore />}>
+                                        {`${d.year}년 ${d.grade}학년 ${d.semester}학기 ${
                                           d.period === "m"
                                             ? "중간고사"
                                             : d.period === "f"
@@ -731,16 +669,9 @@ export default function WikiExams(props) {
                                                   <div>
                                                     <span>문제</span>
                                                     <IconButton
-                                                      onClick={() =>
-                                                        downloadExamFiles(
-                                                          d,
-                                                          "p"
-                                                        )
-                                                      }
+                                                      onClick={() => downloadExamFiles(d, "p")}
                                                     >
-                                                      <PictureAsPdfIcon
-                                                        className={styles.dlPDF}
-                                                      />
+                                                      <PictureAsPdfIcon className={styles.dlPDF} />
                                                     </IconButton>
                                                   </div>
                                                 </td>
@@ -751,26 +682,16 @@ export default function WikiExams(props) {
                                                   <div>
                                                     <span>정답</span>
                                                     <IconButton
-                                                      onClick={() =>
-                                                        downloadExamFiles(
-                                                          d,
-                                                          "a"
-                                                        )
-                                                      }
+                                                      onClick={() => downloadExamFiles(d, "a")}
                                                     >
-                                                      <PictureAsPdfIcon
-                                                        className={styles.dlPDF}
-                                                      />
+                                                      <PictureAsPdfIcon className={styles.dlPDF} />
                                                     </IconButton>
                                                   </div>
                                                 </td>
                                               )}
 
                                               {has(d, "ap") && (
-                                                <td
-                                                  colSpan="2"
-                                                  className={styles.dlTab}
-                                                >
+                                                <td colSpan="2" className={styles.dlTab}>
                                                   <div>
                                                     <span
                                                       style={{
@@ -780,16 +701,9 @@ export default function WikiExams(props) {
                                                       문제 및 정답
                                                     </span>
                                                     <IconButton
-                                                      onClick={() =>
-                                                        downloadExamFiles(
-                                                          d,
-                                                          "ap"
-                                                        )
-                                                      }
+                                                      onClick={() => downloadExamFiles(d, "ap")}
                                                     >
-                                                      <PictureAsPdfIcon
-                                                        className={styles.dlPDF}
-                                                      />
+                                                      <PictureAsPdfIcon className={styles.dlPDF} />
                                                     </IconButton>
                                                   </div>
                                                 </td>

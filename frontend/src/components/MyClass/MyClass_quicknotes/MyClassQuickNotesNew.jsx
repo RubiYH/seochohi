@@ -5,7 +5,7 @@ export default function MyClassQuickNotesNew(props) {
     <>
       <Navbar type="memo" name={props?.name} />
       <div className="wrapper top">
-        <div className="content">dd</div>
+        <div className="content">새 메모</div>
       </div>
     </>
   );

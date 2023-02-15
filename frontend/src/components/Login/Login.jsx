@@ -1,7 +1,6 @@
-import { useMediaQuery } from "react-responsive";
-import { MediaQuery } from "../Modules/MediaQuery";
-import styles from "./Login.module.css";
-
+import { Check } from "@mui/icons-material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import {
   Button,
   Checkbox,
@@ -18,19 +17,11 @@ import { styled } from "@mui/material/styles";
 import axios from "axios";
 import { useState } from "react";
 import settings from "../../settings";
-
-import { Check } from "@mui/icons-material";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import { maxLengthCheck } from "../Modules/maxLengthCheck";
 import Navbar from "../Modules/Navbar/Navbar";
+import styles from "./Login.module.css";
 
 export default function Login(props) {
-  //responsive : PC
-  const isDesktopOrLaptop = useMediaQuery({
-    query: MediaQuery("PC"),
-  });
-
   const [checkId, setCheckId] = useState({ valid: true, value: null });
   const [checkPassword, setCheckPassword] = useState({
     valid: true,
@@ -145,9 +136,7 @@ export default function Login(props) {
               <div className={styles.header}>
                 <span className={styles.title}>로그인</span>
                 <br />
-                <span className={styles.description}>
-                  로그인하여 서초하이를 이용해보세요.
-                </span>
+                <span className={styles.description}>로그인하여 서초하이를 이용해보세요.</span>
               </div>
               <div className={styles.form}>
                 <FormControl error={!checkId.valid}>
@@ -164,9 +153,7 @@ export default function Login(props) {
                     error={!checkId.valid}
                   />
                   {!checkId.valid && (
-                    <FormHelperText sx={{ marginLeft: 0 }}>
-                      학번을 입력해주세요.
-                    </FormHelperText>
+                    <FormHelperText sx={{ marginLeft: 0 }}>학번을 입력해주세요.</FormHelperText>
                   )}
                 </FormControl>
 
@@ -202,9 +189,7 @@ export default function Login(props) {
                     }
                   />
                   {!checkPassword.valid && (
-                    <FormHelperText sx={{ marginLeft: 0 }}>
-                      비밀번호를 입력해주세요.
-                    </FormHelperText>
+                    <FormHelperText sx={{ marginLeft: 0 }}>비밀번호를 입력해주세요.</FormHelperText>
                   )}
                 </FormControl>
                 <FormGroup sx={{ marginTop: "1rem" }}>
@@ -225,9 +210,7 @@ export default function Login(props) {
                   />
                 </FormGroup>
 
-                {onError.status && (
-                  <Error>로그인에 실패하였습니다. {onError.message}</Error>
-                )}
+                {onError.status && <Error>로그인에 실패하였습니다. {onError.message}</Error>}
 
                 <Button
                   variant="outlined"
@@ -241,12 +224,8 @@ export default function Login(props) {
                   }}
                   disabled={isLoading.status}
                 >
-                  {isLoading.status && isLoading.icon !== null && (
-                    <CircularProgress />
-                  )}
-                  {!isLoading.status && isLoading.icon !== "done" && (
-                    <>로그인</>
-                  )}
+                  {isLoading.status && isLoading.icon !== null && <CircularProgress />}
+                  {!isLoading.status && isLoading.icon !== "done" && <>로그인</>}
                   {isLoading.icon === "done" && <Check />}
                 </Button>
                 <Button
@@ -268,11 +247,7 @@ export default function Login(props) {
                   {/* <a href="/login/resetmypassword">비밀번호 재설정</a> */}
                   <a
                     href="#"
-                    onClick={() =>
-                      alert(
-                        "비밀번호 재설정은 shs.startup@gmail.com에 문의해주세요."
-                      )
-                    }
+                    onClick={() => alert("비밀번호 재설정은 shs.startup@gmail.com에 문의해주세요.")}
                   >
                     비밀번호 재설정
                   </a>

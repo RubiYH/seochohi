@@ -6,7 +6,6 @@ const app = express();
 const helmet = require("helmet");
 const config = require("./config").config;
 const glob = require("glob");
-require("./logging"); //로깅
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const { deserializeUser } = require("./api/middleware/deserializeUser");
@@ -14,7 +13,6 @@ const useragent = require("express-useragent");
 const MaintenanceMode = require("./Middlewares/MaintenanceMode");
 
 app.use((req, res, next) => MaintenanceMode(req, res, next));
-
 app.use(helmet());
 app.use(helmet.xssFilter());
 app.use(helmet.frameguard({ action: "deny" }));
@@ -23,11 +21,9 @@ app.use(helmet.dnsPrefetchControl({ allow: true }));
 app.use(helmet.hsts({ includeSubDomains: true }));
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.disable("x-powered-by");
-
 app.use(cors({ credentials: true, origin: process.env.DOMAIN.split(",") }));
 app.use(useragent.express());
 
-/* only when developing */
 app.use((req, res, next) => {
   process.env.DOMAIN.split(",").forEach((w) => {
     if (w.trim() === req.headers.origin) {
@@ -38,8 +34,7 @@ app.use((req, res, next) => {
 });
 
 app.enable("trust proxy");
-//cookie parser
-app.use(cookieParser());
+app.use(cookieParser()); //cookie parser
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.json({ limit: config.settings.maxfilesize }));

@@ -1,28 +1,15 @@
-import styles from "./WikiLunch.module.css";
-
-//axios
 import axios from "axios";
 import { addDays, format, subDays } from "date-fns";
 import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
+import { MediaQuery } from "../../Modules/MediaQuery";
+import Navbar from "../../Modules/Navbar/Navbar";
+import styles from "./WikiLunch.module.css";
 
 //icons
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import {
-  Button,
-  Card,
-  Fade,
-  IconButton,
-  Modal,
-  Stack,
-  Typography,
-} from "@mui/material";
-
-//responsive
-import { useMediaQuery } from "react-responsive";
-import { MediaQuery } from "../../Modules/MediaQuery";
-
-import Navbar from "../../Modules/Navbar/Navbar";
+import { Button, Card, Fade, IconButton, Modal, Stack, Typography } from "@mui/material";
 
 export default function WikiLunch(props) {
   function getDate(date) {
@@ -66,8 +53,6 @@ export default function WikiLunch(props) {
     axios
       .get(LunchAPIurl)
       .then((json) => {
-        // console.log(json);
-
         setLoadedLunch(true);
         done = true;
 
@@ -77,8 +62,7 @@ export default function WikiLunch(props) {
         if (json.data.mealServiceDietInfo) {
           switch (json.data.mealServiceDietInfo[0].head[1].RESULT.CODE) {
             default:
-              ReceivedLunchInfo =
-                "급식 정보를 불러오는 도중에 오류가 발생하였습니다.";
+              ReceivedLunchInfo = "급식 정보를 불러오는 도중에 오류가 발생하였습니다.";
               setLunch({ msg: ReceivedLunchInfo, state: "error" });
               break;
             case "INFO-000":
@@ -88,7 +72,6 @@ export default function WikiLunch(props) {
                 .split(",");
 
               //성공
-
               setLunch({
                 lunch: JSON.stringify(ReceivedLunchInfo),
                 state: "success",
@@ -134,9 +117,7 @@ export default function WikiLunch(props) {
   } else if (lunch.state === "200") {
     LunchInfo = lunch.msg;
   } else if (lunch.state === "success") {
-    LunchInfo = Object.values(JSON.parse(lunch.lunch)).map((l) => (
-      <p key={l}>{l}</p>
-    ));
+    LunchInfo = Object.values(JSON.parse(lunch.lunch)).map((l) => <p key={l}>{l}</p>);
   } else {
     LunchInfo = lunch.msg;
   }
@@ -146,9 +127,7 @@ export default function WikiLunch(props) {
   if (!lunch.origin) {
     LunchOrigin = null;
   } else {
-    LunchOrigin = Object.values(JSON.parse(lunch.origin)).map((o) => (
-      <p key={o}>{o}</p>
-    ));
+    LunchOrigin = Object.values(JSON.parse(lunch.origin)).map((o) => <p key={o}>{o}</p>);
   }
 
   //영양 성분
@@ -156,9 +135,7 @@ export default function WikiLunch(props) {
   if (!lunch.ntr) {
     LunchNTR = null;
   } else {
-    LunchNTR = Object.values(JSON.parse(lunch.ntr)).map((n) => (
-      <p key={n}>{n}</p>
-    ));
+    LunchNTR = Object.values(JSON.parse(lunch.ntr)).map((n) => <p key={n}>{n}</p>);
   }
 
   //급식 전환
@@ -181,9 +158,7 @@ export default function WikiLunch(props) {
     ? `${date[0]}년 ${date[1]}월 ${date[2]}일 (${week[rawdate.getDay()]})`
     : `${date[1]}월 ${date[2]}일 (${week[rawdate.getDay()]})`;
 
-  let unfocusedDateTitle = isDesktopOrLaptop
-    ? "yyyy년 MM월 dd일"
-    : " MM월 dd일";
+  let unfocusedDateTitle = isDesktopOrLaptop ? "yyyy년 MM월 dd일" : " MM월 dd일";
 
   const Modalstyle = {
     position: "absolute",
@@ -193,8 +168,7 @@ export default function WikiLunch(props) {
     width: "16rem",
     height: "32rem",
     borderRadius: "20px",
-    boxShadow:
-      "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px",
+    boxShadow: "rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px",
     textAlign: "center",
   };
 
@@ -265,18 +239,10 @@ export default function WikiLunch(props) {
                 >
                   영양 성분
                 </Button>
-                <Modal
-                  open={openNTR}
-                  onClose={handleCloseNTR}
-                  closeAfterTransition
-                >
+                <Modal open={openNTR} onClose={handleCloseNTR} closeAfterTransition>
                   <Fade in={openNTR}>
                     <Card style={Modalstyle}>
-                      <Typography
-                        variant="h5"
-                        component="h1"
-                        sx={{ margin: "2rem" }}
-                      >
+                      <Typography variant="h5" component="h1" sx={{ margin: "2rem" }}>
                         영양 성분
                       </Typography>
                       <div className={styles.modalInfo}>{LunchNTR}</div>
@@ -298,18 +264,10 @@ export default function WikiLunch(props) {
                 >
                   원산지
                 </Button>
-                <Modal
-                  open={openOrigin}
-                  onClose={handleCloseOrigin}
-                  closeAfterTransition
-                >
+                <Modal open={openOrigin} onClose={handleCloseOrigin} closeAfterTransition>
                   <Fade in={openOrigin}>
                     <Card style={Modalstyle}>
-                      <Typography
-                        variant="h5"
-                        component="h1"
-                        sx={{ margin: "2rem" }}
-                      >
+                      <Typography variant="h5" component="h1" sx={{ margin: "2rem" }}>
                         원산지
                       </Typography>
                       <div className={styles.modalInfo}>{LunchOrigin}</div>

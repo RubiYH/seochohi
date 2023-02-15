@@ -10,9 +10,7 @@ module.exports = async function (req, res, next) {
   if (!accessToken && pendingID) {
     return getConnection((connection) => {
       connection.query(
-        `SELECT \`ID\` FROM \`pending_users\` WHERE \`ID\`=${connection.escape(
-          pendingID
-        )}`,
+        `SELECT \`ID\` FROM \`pending_users\` WHERE \`ID\`=${connection.escape(pendingID)}`,
         (err, results, fields) => {
           if (err) {
             res.json({

@@ -52,16 +52,12 @@ export default function BottomPopup() {
             >
               <div className={styles.card} ref={nodeRef}>
                 <div className={styles.header}>
-                  <strong className={styles.popup_title}>
-                    {PopupList[0].title}
-                  </strong>
+                  <strong className={styles.popup_title}>{PopupList[0].title}</strong>
                   <IconButton onClick={() => setClosePopup(true)}>
                     <Close fontSize="small" />
                   </IconButton>
                 </div>
-                <p style={{ paddingLeft: "8px" }}>
-                  {parse(PopupList[0].description)}
-                </p>
+                <p style={{ paddingLeft: "8px" }}>{parse(PopupList[0].description)}</p>
               </div>
             </CSSTransition>
           )}

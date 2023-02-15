@@ -1,3 +1,4 @@
+import { Add, Delete } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -12,30 +13,18 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
+import ImageUploading from "react-images-uploading";
 import settings from "../../../settings";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
 import { maxLengthCheck } from "../../Modules/maxLengthCheck";
-import { MediaQuery } from "../../Modules/MediaQuery";
-import styles from "./ForestNew.module.css";
-
-import { Add, Delete } from "@mui/icons-material";
-import ImageUploading from "react-images-uploading";
 import Navbar from "../../Modules/Navbar/Navbar";
 import { HandleResponse } from "../../Modules/ResponseCode";
 import { Tags } from "../Forest/Tags";
 import BeforePost from "./ForestBeforePost";
+import styles from "./ForestNew.module.css";
 
 export default function ForestNew(props) {
-  //JWT 인증
-  const [isAuth, setAuth] = useState(false);
-  const [userData, setUserData] = useState({
-    status: null,
-    userID: null,
-    username: null,
-  });
-
   useEffect(() => {
     checkSession().then((c) => {
       setAuth(c.isAuth);
@@ -47,16 +36,6 @@ export default function ForestNew(props) {
     });
   }, []);
 
-  //responsive : PC
-  const isDesktopOrLaptop = useMediaQuery({
-    query: MediaQuery("PC"),
-  });
-
-  //responsive : Mobile
-  const isTabletOrMobile = useMediaQuery({
-    query: MediaQuery("Mobile"),
-  });
-
   const [category, setCategory] = useState("");
 
   const [title, setTitle] = useState(null);
@@ -65,7 +44,7 @@ export default function ForestNew(props) {
 
   //upload images
 
-  const onImageChange = (imageList, addUpdateIndex) => {
+  const onImageChange = (imageList) => {
     // data for submit
     setImages(imageList);
   };
@@ -87,10 +66,6 @@ export default function ForestNew(props) {
     });
   };
 
-  const [errorTitle, setTitleError] = useState({
-    status: false,
-    message: null,
-  });
   const [errorContent, setContentError] = useState({
     status: false,
     message: null,
@@ -207,23 +182,10 @@ export default function ForestNew(props) {
               acceptType={["jpg", "jpeg", "png"]}
               maxFileSize={maxFileSize}
             >
-              {({
-                imageList,
-                onImageUpload,
-                onImageRemoveAll,
-                onImageUpdate,
-                onImageRemove,
-                errors,
-              }) => (
+              {({ imageList, onImageUpload, onImageRemove, errors }) => (
                 <>
-                  <span
-                    className={styles.title}
-                    style={{ flexDirection: "column" }}
-                  >
-                    <div
-                      className={styles.title}
-                      style={{ alignItems: "center" }}
-                    >
+                  <span className={styles.title} style={{ flexDirection: "column" }}>
+                    <div className={styles.title} style={{ alignItems: "center" }}>
                       이미지 업로드 (최대 10장)
                       <IconButton onClick={onImageUpload}>
                         <Add />
@@ -234,13 +196,9 @@ export default function ForestNew(props) {
                   {errors && (
                     <div style={{ color: "#d32f2f" }}>
                       {errors.maxNumber && (
-                        <span>
-                          이미지는 최대 10장까지만 업로드할 수 있습니다.
-                        </span>
+                        <span>이미지는 최대 10장까지만 업로드할 수 있습니다.</span>
                       )}
-                      {errors.acceptType && (
-                        <span>지원되지 않는 파일 형식입니다</span>
-                      )}
+                      {errors.acceptType && <span>지원되지 않는 파일 형식입니다</span>}
                       {errors.maxFileSize && (
                         <span>
                           파일 크키가 너무 큽니다. (최대 {maxFileSize / 1000000}
@@ -252,11 +210,7 @@ export default function ForestNew(props) {
                   <div className={styles.imageList}>
                     {imageList.map((image, index) => (
                       <div className={styles.imageArray_wrapper} key={index}>
-                        <img
-                          src={image["data_url"]}
-                          alt=""
-                          className={styles.imageArray}
-                        />
+                        <img src={image["data_url"]} alt="" className={styles.imageArray} />
                         <span>
                           {image["file"].name}
                           <IconButton onClick={() => onImageRemove(index)}>

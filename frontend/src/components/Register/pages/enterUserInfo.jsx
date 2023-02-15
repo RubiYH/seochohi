@@ -11,15 +11,8 @@ import { useEffect } from "react";
 import styles from "../Register.module.css";
 
 export default function EnterUserInfo(props) {
-  const {
-    username,
-    setUsername,
-    gender,
-    setGender,
-    FormControlFlex,
-    FormLabelStyle,
-    setCGN,
-  } = props.data;
+  const { username, setUsername, gender, setGender, FormControlFlex, FormLabelStyle, setCGN } =
+    props.data;
 
   useEffect(() => {
     if (!username || !gender) {

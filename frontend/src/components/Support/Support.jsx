@@ -4,7 +4,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import settings from "../../settings";
 import Navbar from "../Modules/Navbar/Navbar";
-
 import styles from "./Support.module.css";
 
 export default function Support(props) {
@@ -24,12 +23,6 @@ export default function Support(props) {
     });
   }, []);
 
-  const gridStyle = {
-    display: "block",
-    textAlign: "center",
-    paddingTop: "16px",
-    whiteSpace: "nowrap",
-  };
   return (
     <>
       <Navbar type="menu" name={props?.name} />
@@ -47,9 +40,7 @@ export default function Support(props) {
           </div>
           <br />
           <Card className={styles.card}>
-            <Box className={`${styles.faqCategory} ${styles.faq}`}>
-              자주 묻는 질문
-            </Box>
+            <Box className={`${styles.faqCategory} ${styles.faq}`}>자주 묻는 질문</Box>
             <div className={styles.faqList}>
               {FAQ &&
                 Object.entries(FAQ).map(([key, value], i) => (
@@ -66,9 +57,7 @@ export default function Support(props) {
                       >
                         <span
                           className={styles.faqAsk}
-                          onClick={() =>
-                            setOpen({ ...open, [key]: !open[key] })
-                          }
+                          onClick={() => setOpen({ ...open, [key]: !open[key] })}
                         >
                           Q: {key}
                           {open[key] ? <ArrowDropUp /> : <ArrowDropDown />}
@@ -85,20 +74,9 @@ export default function Support(props) {
           </Card>
           <br />
           <Card className={styles.card}>
-            <Box className={`${styles.faqCategory} ${styles.contact}`}>
-              문의하기
-            </Box>
+            <Box className={`${styles.faqCategory} ${styles.contact}`}>문의하기</Box>
             <Grid container>
-              <span
-                style={{
-                  width: "100%",
-                  paddingTop: "8px",
-                  textAlign: "center",
-                }}
-              >
-                shs.startup@gmail.com
-              </span>
-              {/* <Grid item xs={4} sx={gridStyle}>
+              <Grid item xs={4} sx={gridStyle}>
                 <Button
                   variant="contained"
                   href={`mailto:${settings.email}?subject=[서초하이] 문의사항 - <제목을 입력해주세요>`}
@@ -123,7 +101,7 @@ export default function Support(props) {
                 >
                   건의하기
                 </Button>
-              </Grid> */}
+              </Grid>
             </Grid>
           </Card>
         </div>

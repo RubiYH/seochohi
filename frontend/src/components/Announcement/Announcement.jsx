@@ -38,7 +38,7 @@ export default function Announcement(props) {
               <Card
                 className={styles.content}
                 dangerouslySetInnerHTML={{
-                  __html: sanitizer(NoticeData?.description),
+                  __html: sanitizer(NoticeData?.description), //미완성
                 }}
               ></Card>
             </>

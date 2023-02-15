@@ -1,10 +1,4 @@
-import {
-  Card,
-  CardActionArea,
-  Grid,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Card, CardActionArea, Grid, IconButton, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
@@ -53,8 +47,6 @@ export default function Notice(props) {
   const [NoticeData, setNoticeData] = useState([]);
   const [closeNotice, setCloseNotice] = useState(false);
 
-  const isAuth = props?.isAuth;
-
   const mH = "72px";
 
   useEffect(() => {
@@ -63,11 +55,7 @@ export default function Notice(props) {
       .get(`${settings.api.domain}/api/getNotice`)
       .then((json) => {
         //공지 끔
-        if (
-          json.data.data[0]?.id === cookies.notice?.id &&
-          cookies.notice?.read
-        )
-          return;
+        if (json.data.data[0]?.id === cookies.notice?.id && cookies.notice?.read) return;
 
         if (json.data?.data.length === 0) return;
         setNoticeData(json.data.data);
@@ -119,14 +107,8 @@ export default function Notice(props) {
           paddingTop: 0,
         }}
       >
-        <CardActionArea
-          component="div"
-          style={{ borderRadius: "var(--paper-radius-sm)" }}
-        >
-          <Link
-            to={`${NoticeData ? NoticeData[0]?.url : "#"}`}
-            style={{ textDecoration: "none" }}
-          >
+        <CardActionArea component="div" style={{ borderRadius: "var(--paper-radius-sm)" }}>
+          <Link to={`${NoticeData ? NoticeData[0]?.url : "#"}`} style={{ textDecoration: "none" }}>
             <Card className={styles.NoticeBoard}>
               <SeverityIcon Severity={NoticeData[0]?.severity} />
               <Typography

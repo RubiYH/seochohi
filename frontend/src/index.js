@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-//cookie
-import { CookiesProvider } from "react-cookie";
+import { CookiesProvider } from "react-cookie"; //cookie
 import { BrowserRouter, useLocation } from "react-router-dom";
 import { useLayoutEffect } from "react";
 

@@ -1,18 +1,9 @@
-import { useMediaQuery } from "react-responsive";
-import { MediaQuery } from "../Modules/MediaQuery";
-
+import { AccountCircle, Lock, SettingsApplications } from "@mui/icons-material";
+import { BottomNavigation, BottomNavigationAction, Paper, Typography } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import settings from "../../settings";
-
-import { AccountCircle, Lock, SettingsApplications } from "@mui/icons-material";
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Paper,
-  Typography,
-} from "@mui/material";
 import { checkSession } from "../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../Modules/Authorization/sessionSwitches";
 import Navbar from "../Modules/Navbar/Navbar";
@@ -67,23 +58,7 @@ export default function Settings(props) {
 
   const [userInfo, setUserInfo] = useState({});
 
-  //responsive : PC
-  const isDesktopOrLaptop = useMediaQuery({
-    query: MediaQuery("PC"),
-  });
-
-  //responsive : Mobile
-  const isTabletOrMobile = useMediaQuery({
-    query: MediaQuery("Mobile"),
-  });
-
-  const disabledInputStyle = {
-    padding: "0.25rem",
-  };
-
-  const InfoSpan = (props) => (
-    <span>{props?.value !== "null" ? props?.value : "해당 없음"}</span>
-  );
+  const InfoSpan = (props) => <span>{props?.value !== "null" ? props?.value : "해당 없음"}</span>;
 
   const [CustomTitle, setCustomTitle] = useState(props?.name);
   const [menuValue, setMenu] = useState(0);
@@ -136,11 +111,7 @@ export default function Settings(props) {
             <div className="content column">
               {/* 개인정보 */}
               {menuValue === 0 && (
-                <UserInfo
-                  userInfo={userInfo}
-                  InfoSpan={InfoSpan}
-                  EditSpan={EditSpan}
-                />
+                <UserInfo userInfo={userInfo} InfoSpan={InfoSpan} EditSpan={EditSpan} />
               )}
               {/* 계정 */}
               {menuValue === 1 && (
@@ -163,10 +134,7 @@ export default function Settings(props) {
             </div>
           </div>
           {/* 하단 네비바 */}
-          <Paper
-            sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }}
-            elevation={3}
-          >
+          <Paper sx={{ position: "fixed", bottom: 0, left: 0, right: 0 }} elevation={3}>
             <BottomNavigation
               showLabels
               value={menuValue}
@@ -174,16 +142,8 @@ export default function Settings(props) {
                 setMenu(n);
               }}
             >
-              <BottomNavigationAction
-                label="개인정보"
-                icon={<AccountCircle />}
-                disableRipple
-              />
-              <BottomNavigationAction
-                label="내 계정"
-                icon={<Lock />}
-                disableRipple
-              />
+              <BottomNavigationAction label="개인정보" icon={<AccountCircle />} disableRipple />
+              <BottomNavigationAction label="내 계정" icon={<Lock />} disableRipple />
               <BottomNavigationAction
                 label="일반 설정"
                 icon={<SettingsApplications />}

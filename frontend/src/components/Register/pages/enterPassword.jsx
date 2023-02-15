@@ -1,8 +1,7 @@
 import { Box, FormControl, FormLabel, TextField } from "@mui/material";
-import { rules } from "../rules";
-
 import { useEffect } from "react";
 import styles from "../Register.module.css";
+import { rules } from "../rules";
 
 export default function EnterPassword(props) {
   const {
@@ -83,8 +82,7 @@ export default function EnterPassword(props) {
             helperText={validPassword.message}
             FormHelperTextProps={{
               style: {
-                color:
-                  validPassword.status === "success" ? "#66BB6A" : "#d32f2f",
+                color: validPassword.status === "success" ? "#66BB6A" : "#d32f2f",
                 position: "absolute",
                 top: "2.5rem",
               },
@@ -110,8 +108,7 @@ export default function EnterPassword(props) {
             helperText={samePassword.message}
             FormHelperTextProps={{
               style: {
-                color:
-                  samePassword.status === "success" ? "#66BB6A" : "#d32f2f",
+                color: samePassword.status === "success" ? "#66BB6A" : "#d32f2f",
                 position: "absolute",
                 top: "2.5rem",
               },

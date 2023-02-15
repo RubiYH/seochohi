@@ -1,11 +1,8 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import { useLocation } from "react-router-dom";
 import settings from "../../../settings";
-import { MediaQuery } from "../../Modules/MediaQuery";
 import Navbar from "../../Modules/Navbar/Navbar";
-
 import ByEmail from "./byEmail";
 import ByPhone from "./byPhone";
 import ChooseVerify from "./chooseVerify";
@@ -13,11 +10,6 @@ import ChooseVerify from "./chooseVerify";
 export default function VerifyLogin(props) {
   const params = useLocation().search;
   const rt = new URLSearchParams(params).get("t");
-
-  //responsive : PC
-  const isDesktopOrLaptop = useMediaQuery({
-    query: MediaQuery("PC"),
-  });
 
   const [status, setStatus] = useState(null);
 

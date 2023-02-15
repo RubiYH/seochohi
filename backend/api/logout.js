@@ -1,6 +1,4 @@
 const getIP = require("../Middlewares/getIP");
-const { getConnection } = require("./Modules/connectToMysql");
-const { signJWT, verifyJWT } = require("./utils/jwt.utils");
 const Cache = require("./Modules/cache");
 
 module.exports = function (app) {

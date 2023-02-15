@@ -4,7 +4,6 @@ const authJWT = require("../Middlewares/authJWT");
 module.exports = function (app) {
   app.get("/api/downloadexamfiles", authJWT, async function (req, res) {
     let request = req.query;
-    // console.log(request.file);
 
     try {
       let grade;
@@ -36,12 +35,7 @@ module.exports = function (app) {
         );
       });
     } catch (err) {
-      console.log(
-        "----------- Error -----------\nURL: " +
-          req.url +
-          "\nErr: " +
-          err.toString()
-      );
+      console.log("----------- Error -----------\nURL: " + req.url + "\nErr: " + err.toString());
       res.json({
         status: "error",
       });

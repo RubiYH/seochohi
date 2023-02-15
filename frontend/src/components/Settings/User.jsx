@@ -14,26 +14,8 @@ export default function UserInfo(props) {
   const EditSpan = props?.EditSpan;
 
   const editInfo = () => {
-    alert(
-      "내 정보 수정은 사이드 메뉴 하단에 위치한 [FAQ 및 문의] 탭을 참고해주세요."
-    );
+    alert("내 정보 수정은 사이드 메뉴 하단에 위치한 [FAQ 및 문의] 탭을 참고해주세요.");
   };
-
-  //전화번호 추가
-  const addPhone = () => {};
-
-  //이메일 추가
-  const addEmail = () => {};
-
-  //전화번호 수정
-  const editPhone = () => {
-    alert(
-      "전화번호 수정은 사이드 메뉴 하단에 위치한 [FAQ 및 문의] 페이지 내 [계정] 탭을 참고해주세요."
-    );
-  };
-
-  //이메일 수정
-  const editEmail = () => {};
 
   return (
     <Grid container rowSpacing={2} spacing={2}>
@@ -58,36 +40,24 @@ export default function UserInfo(props) {
               <tbody>
                 <tr>
                   <td className={`${styles.infoRow} ${styles.key}`}>학년</td>
-                  <td className={`${styles.infoRow} ${styles.value}`}>
-                    {userInfo?.Grade}학년
-                  </td>
+                  <td className={`${styles.infoRow} ${styles.value}`}>{userInfo?.Grade}학년</td>
                 </tr>
                 <tr>
                   <td className={`${styles.infoRow} ${styles.key}`}>반</td>
-                  <td className={`${styles.infoRow} ${styles.value}`}>
-                    {userInfo?.Class}반
-                  </td>
+                  <td className={`${styles.infoRow} ${styles.value}`}>{userInfo?.Class}반</td>
                 </tr>
                 <tr>
                   <td className={`${styles.infoRow} ${styles.key}`}>번호</td>
-                  <td className={`${styles.infoRow} ${styles.value}`}>
-                    {userInfo?.StudentID}번
-                  </td>
+                  <td className={`${styles.infoRow} ${styles.value}`}>{userInfo?.StudentID}번</td>
                 </tr>
                 <tr>
                   <td className={`${styles.infoRow} ${styles.key}`}>이름</td>
-                  <td className={`${styles.infoRow} ${styles.value}`}>
-                    {userInfo?.Username}
-                  </td>
+                  <td className={`${styles.infoRow} ${styles.value}`}>{userInfo?.Username}</td>
                 </tr>
                 <tr>
                   <td className={`${styles.infoRow} ${styles.key}`}>성별</td>
                   <td className={`${styles.infoRow} ${styles.value}`}>
-                    {userInfo?.Gender === "m"
-                      ? "남"
-                      : userInfo?.Gender === "f"
-                      ? "여"
-                      : "없음"}
+                    {userInfo?.Gender === "m" ? "남" : userInfo?.Gender === "f" ? "여" : "없음"}
                   </td>
                 </tr>
               </tbody>
@@ -119,25 +89,6 @@ export default function UserInfo(props) {
                     }}
                   >
                     <InfoSpan value={userInfo?.Email} />
-                    {/* {userInfo?.Email === "null" ? (
-                      <Button
-                        variant="outlined"
-                        sx={{ marginLeft: "1rem" }}
-                        onClick={() => addEmail()}
-                      >
-                        추가
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="outlined"
-                        sx={{ marginLeft: "1rem" }}
-                        onClick={() => {
-                          editEmail();
-                        }}
-                      >
-                        수정
-                      </Button>
-                    )} */}
                   </div>
                 </td>
               </tr>
@@ -160,27 +111,6 @@ export default function UserInfo(props) {
                     }}
                   >
                     <InfoSpan value={userInfo?.Phone} />
-                    {/* {userInfo?.Phone === "null" ? (
-                      <Button
-                        variant="outlined"
-                        sx={{ marginLeft: "1rem" }}
-                        onClick={() => {
-                          addPhone();
-                        }}
-                      >
-                        추가
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="outlined"
-                        sx={{ marginLeft: "1rem" }}
-                        onClick={() => {
-                          editPhone();
-                        }}
-                      >
-                        수정
-                      </Button>
-                    )} */}
                   </div>
                 </td>
               </tr>

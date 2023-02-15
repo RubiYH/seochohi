@@ -1,12 +1,5 @@
 import { ChevronLeft, ExpandLess, ExpandMore } from "@mui/icons-material";
-import {
-  Box,
-  Button,
-  Card,
-  Collapse,
-  IconButton,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, Collapse, IconButton, Typography } from "@mui/material";
 import axios from "axios";
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
@@ -14,7 +7,7 @@ import settings from "../../../settings";
 import styles from "../Settings.module.css";
 
 export default function ManageSessions(props) {
-  const { menu, setMenu, userInfo, userData } = props?.data;
+  const { setMenu, userInfo } = props?.data;
 
   //Collapse
   const [isOpened, setOpened] = useState({
@@ -68,8 +61,7 @@ export default function ManageSessions(props) {
     let msg = "";
 
     if (isCurrent) {
-      msg =
-        "현재 세션에서 로그아웃하시겠습니까? 다시 로그인 시 본인인증이 필요합니다.";
+      msg = "현재 세션에서 로그아웃하시겠습니까? 다시 로그인 시 본인인증이 필요합니다.";
     } else {
       msg = "해당 세션을 삭제하시겠습니까?";
     }
@@ -111,20 +103,14 @@ export default function ManageSessions(props) {
 
   return (
     <Box sx={{ pb: 7 }}>
-      <Box
-        component="div"
-        className={styles.centerAlign}
-        sx={{ marginBottom: "8px" }}
-      >
+      <Box component="div" className={styles.centerAlign} sx={{ marginBottom: "8px" }}>
         <IconButton onClick={() => setMenu("main")}>
           <ChevronLeft />
         </IconButton>
         돌아가기
       </Box>
       <Card className={styles.infoCard}>
-        <span className={styles.cardHeader}>
-          로그인 세션 기록 ({session?.length || 0})
-        </span>
+        <span className={styles.cardHeader}>로그인 세션 기록 ({session?.length || 0})</span>
         {session &&
           session?.map((s, i) => (
             <React.Fragment key={i}>
@@ -146,9 +132,7 @@ export default function ManageSessions(props) {
                     className={styles.selected}
                     style={{
                       borderBottom:
-                        localStorage.getItem("theme") === "dark"
-                          ? "1px solid #fff"
-                          : null,
+                        localStorage.getItem("theme") === "dark" ? "1px solid #fff" : null,
                     }}
                   >
                     {s?.agent}
@@ -178,12 +162,7 @@ export default function ManageSessions(props) {
                   <tbody>
                     <tr className={`${styles.flexTr} ${styles.columnTr}`}>
                       <td>접속 시간</td>
-                      <td>
-                        {format(
-                          new Date(s?.Date),
-                          "yyyy년 MM월 dd일 hh시 mm분 ss초"
-                        )}
-                      </td>
+                      <td>{format(new Date(s?.Date), "yyyy년 MM월 dd일 hh시 mm분 ss초")}</td>
                     </tr>
                     <tr className={`${styles.flexTr} ${styles.columnTr}`}>
                       <td>접속 환경</td>
@@ -193,8 +172,8 @@ export default function ManageSessions(props) {
                       <td>IP 주소</td>
                       <td>{s?.IP || "해당 없음"}</td>
                     </tr>
-                    {JSON.parse(userInfo?.Session)[userInfo?.currentSession]
-                      ?.token === s?.token && (
+                    {JSON.parse(userInfo?.Session)[userInfo?.currentSession]?.token ===
+                      s?.token && (
                       <tr>
                         <td>
                           <Typography color="primary">현재 세션</Typography>
@@ -203,8 +182,8 @@ export default function ManageSessions(props) {
                     )}
                     <tr>
                       <td>
-                        {JSON.parse(userInfo?.Session)[userInfo?.currentSession]
-                          ?.token === s?.token ? (
+                        {JSON.parse(userInfo?.Session)[userInfo?.currentSession]?.token ===
+                        s?.token ? (
                           <Button
                             variant="outlined"
                             color="error"

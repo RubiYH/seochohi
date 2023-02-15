@@ -1,6 +1,5 @@
 const authJWT = require("../Middlewares/authJWT");
 const { getConnection } = require("./Modules/connectToMysql");
-const { verifyJWT } = require("./utils/jwt.utils");
 
 module.exports = function (app) {
   app.get("/api/getUser", authJWT, async function (req, res) {
@@ -37,9 +36,7 @@ module.exports = function (app) {
           }
 
           //현재 세션 배열의 인덱스
-          const sessionIndex = sessionFromDB.findIndex(
-            (s) => s?.token === sessionToken
-          );
+          const sessionIndex = sessionFromDB.findIndex((s) => s?.token === sessionToken);
 
           results[0].currentSession = sessionIndex;
 

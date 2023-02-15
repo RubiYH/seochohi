@@ -4,15 +4,7 @@ import { maxLengthCheck } from "../../Modules/maxLengthCheck";
 import styles from "../Register.module.css";
 
 export default function EnterContact(props) {
-  const {
-    phone,
-    setPhone,
-    email,
-    setEmail,
-    FormLabelStyle,
-    FormControlFlex,
-    setCGN,
-  } = props.data;
+  const { phone, setPhone, email, setEmail, FormLabelStyle, FormControlFlex, setCGN } = props.data;
 
   useEffect(() => {
     if (!email && !phone) {

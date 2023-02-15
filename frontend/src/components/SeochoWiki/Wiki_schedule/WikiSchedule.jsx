@@ -3,16 +3,15 @@ import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import interactionPlugin from "@fullcalendar/interaction";
 import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import { Card, Checkbox, FormControlLabel } from "@mui/material";
-import { useMediaQuery } from "react-responsive";
-import events from "./events"; //일정
-import styles from "./WikiSchedule.module.css";
-
 import { useEffect, useMemo, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
 import { MediaQuery } from "../../Modules/MediaQuery";
 import Navbar from "../../Modules/Navbar/Navbar";
+import events from "./events"; //일정
 import filterList from "./filterList";
+import styles from "./WikiSchedule.module.css";
 
 export default function WikiSchedule(props) {
   //JWT 인증
@@ -65,7 +64,6 @@ export default function WikiSchedule(props) {
 
     let getEvents = events.filter((e) => e.start === date.toString()).reverse();
     setEventsList({ rawdate, formatted, getEvents });
-    // console.log({ rawdate, formatted, getEvents });
   }
 
   return (
@@ -192,20 +190,7 @@ export default function WikiSchedule(props) {
 
               <Card className={styles.calendar}>
                 <FullCalendar
-                  plugins={[
-                    dayGridPlugin,
-                    googleCalendarPlugin,
-                    interactionPlugin,
-                  ]}
-                  /*            
-              !setState() 관련 오류
-              googleCalendarApiKey={settings.api.googleCalendarAPI}
-              eventSources={{
-                googleCalendarId: settings.api.googleCalendarId,
-                textColor: "red",
-                color: "white",
-              }}
-              */
+                  plugins={[dayGridPlugin, googleCalendarPlugin, interactionPlugin]}
                   initialView="dayGridMonth"
                   weekends={true}
                   events={MemoizedEvents}
@@ -241,10 +226,7 @@ export default function WikiSchedule(props) {
                     eventsList.getEvents.map((e) => (
                       <div key={e.title}>
                         <p>
-                          <span
-                            className="fc-daygrid-event-dot"
-                            style={{ borderRadius: 0 }}
-                          ></span>
+                          <span className="fc-daygrid-event-dot" style={{ borderRadius: 0 }}></span>
                           {e.title}
                         </p>
                       </div>

@@ -1,3 +1,4 @@
+import { Settings } from "@mui/icons-material";
 import {
   Box,
   Button,
@@ -10,24 +11,21 @@ import {
   Paper,
 } from "@mui/material";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
 import settings from "../../settings";
-import events from "../SeochoWiki/Wiki_schedule/events";
-import styles from "./Home.module.css";
-
-import { useMediaQuery } from "react-responsive";
-import { MediaQuery } from "../Modules/MediaQuery";
-
-import { Settings } from "@mui/icons-material";
-import { useEffect, useState } from "react";
 import GoodBye from "../GoodBye/GoodBye";
 import BottomPopup from "../Modules/BottomPopup/BottomPopup";
 import { elapsedTime } from "../Modules/elapsedTime";
 import MainBanner from "../Modules/MainBanner/MainBanner";
+import { MediaQuery } from "../Modules/MediaQuery";
 import Navbar from "../Modules/Navbar/Navbar";
 import Notice from "../Modules/Notice/Notice";
 import TimeTable from "../MyClass/MyClass_timetable/TimeTable";
 import { Tags } from "../SeochoForest/Forest/Tags";
+import events from "../SeochoWiki/Wiki_schedule/events";
+import styles from "./Home.module.css";
 
 export default function Home(props) {
   const { isAuth, userData } = props.data;
@@ -46,8 +44,6 @@ export default function Home(props) {
   const isTabletOrMobile = useMediaQuery({
     query: MediaQuery("Mobile"),
   });
-
-  //responsive : PC
 
   function getDate(date) {
     var year = date.getFullYear();
@@ -133,9 +129,7 @@ export default function Home(props) {
   } else if (lunch.state === "200") {
     LunchInfo = lunch.msg;
   } else if (lunch.state === "success") {
-    LunchInfo = Object.values(JSON.parse(lunch.lunch)).map((l) => (
-      <p key={l}>{l}</p>
-    ));
+    LunchInfo = Object.values(JSON.parse(lunch.lunch)).map((l) => <p key={l}>{l}</p>);
   } else {
     LunchInfo = lunch.msg;
   }
@@ -291,19 +285,13 @@ export default function Home(props) {
                   }}
                 >
                   <div className={styles.avatarInfo}>
-                    <div
-                      className={styles.avatar}
-                      style={{ width: isAuth ? "" : 0 }}
-                    >
+                    <div className={styles.avatar} style={{ width: isAuth ? "" : 0 }}>
                       <img src={getAvatar} alt="" />
                     </div>
                     <div className={styles.userInfo}>
                       <span>
                         {userData?.userID
-                          ? `${String(userData?.userID).slice(
-                              0,
-                              1
-                            )}학년 ${parseInt(
+                          ? `${String(userData?.userID).slice(0, 1)}학년 ${parseInt(
                               String(userData?.userID).slice(1, 3)
                             )}반`
                           : ""}
@@ -328,9 +316,6 @@ export default function Home(props) {
                         <Settings fontSize="small" />
                       </IconButton>
                     </Link>
-                    {/* <IconButton onClick={() => changeCard()}>
-                      <AppRegistration fontSize="small" />
-                    </IconButton> */}
                   </div>
                 </Card>
               </Grid>
@@ -339,11 +324,7 @@ export default function Home(props) {
             {/* <HomeMenu /> */}
 
             <>
-              <Grid
-                item
-                xs={isTabletOrMobile ? 12 : 6}
-                sx={{ paddingTop: "0 !important" }}
-              >
+              <Grid item xs={isTabletOrMobile ? 12 : 6} sx={{ paddingTop: "0 !important" }}>
                 <Paper
                   elevation={0}
                   sx={{
@@ -363,28 +344,19 @@ export default function Home(props) {
                   </Paper>
                   <Card className={styles.gridContent}>
                     {/* 나의 시간표 */}
-                    {timetable && (
-                      <TimeTable data={timetable} tooltip={false} />
-                    )}
+                    {timetable && <TimeTable data={timetable} tooltip={false} />}
                   </Card>
                 </Paper>
               </Grid>
             </>
 
-            <Grid
-              item
-              xs={isTabletOrMobile ? 12 : 6}
-              sx={{ paddingTop: "0 !important" }}
-            >
+            <Grid item xs={isTabletOrMobile ? 12 : 6} sx={{ paddingTop: "0 !important" }}>
               <Paper elevation={0} className={styles["box-container"]}>
                 <Paper elevation={0} className={styles.gridTitle}>
                   <div className={styles.gridTitleText}>
                     오늘의 급식
                     <div>
-                      <Link
-                        to="/wiki/lunch"
-                        className={`${styles.linkText} ${styles.rT}`}
-                      >
+                      <Link to="/wiki/lunch" className={`${styles.linkText} ${styles.rT}`}>
                         더보기
                       </Link>
                     </div>
@@ -411,20 +383,13 @@ export default function Home(props) {
               </Paper>
             </Grid>
 
-            <Grid
-              item
-              xs={isTabletOrMobile ? 12 : 6}
-              sx={{ paddingTop: "0 !important" }}
-            >
+            <Grid item xs={isTabletOrMobile ? 12 : 6} sx={{ paddingTop: "0 !important" }}>
               <Paper elevation={0} className={styles["box-container"]}>
                 <Paper elevation={0} className={styles.gridTitle}>
                   <div className={styles.gridTitleText}>
                     학사일정
                     <div>
-                      <Link
-                        to="/wiki/schedule"
-                        className={`${styles.linkText} ${styles.rT}`}
-                      >
+                      <Link to="/wiki/schedule" className={`${styles.linkText} ${styles.rT}`}>
                         더보기
                       </Link>
                     </div>
@@ -439,20 +404,13 @@ export default function Home(props) {
                 </Card>
               </Paper>
             </Grid>
-            <Grid
-              item
-              xs={isTabletOrMobile ? 12 : 6}
-              sx={{ paddingTop: "0 !important" }}
-            >
+            <Grid item xs={isTabletOrMobile ? 12 : 6} sx={{ paddingTop: "0 !important" }}>
               <Paper elevation={0} className={styles["box-container"]}>
                 <Paper elevation={0} className={styles.gridTitle}>
                   <div className={styles.gridTitleText}>
                     서초고숲
                     <div>
-                      <Link
-                        to="/forest"
-                        className={`${styles.linkText} ${styles.rT}`}
-                      >
+                      <Link to="/forest" className={`${styles.linkText} ${styles.rT}`}>
                         더보기
                       </Link>
                     </div>
@@ -461,8 +419,7 @@ export default function Home(props) {
                 <Card
                   className={styles.gridContent}
                   style={{
-                    justifyContent:
-                      ForestData?.length > 0 ? "flex-start" : null,
+                    justifyContent: ForestData?.length > 0 ? "flex-start" : null,
                   }}
                 >
                   {/* 서초고숲 */}
@@ -477,13 +434,9 @@ export default function Home(props) {
                               <span>
                                 [{Tags.get(f?.Tags)}] {f?.Username}
                               </span>
-                              <span className={styles.ForestTitle}>
-                                {f?.Content}
-                              </span>
+                              <span className={styles.ForestTitle}>{f?.Content}</span>
                             </div>
-                            <span className={styles.ForestTime}>
-                              {elapsedTime(f?.Date)}
-                            </span>
+                            <span className={styles.ForestTime}>{elapsedTime(f?.Date)}</span>
                           </Link>
                         </CardActionArea>
                       ))
@@ -493,20 +446,13 @@ export default function Home(props) {
                 </Card>
               </Paper>
             </Grid>
-            <Grid
-              item
-              xs={isTabletOrMobile ? 12 : 6}
-              sx={{ paddingTop: "0 !important" }}
-            >
+            <Grid item xs={isTabletOrMobile ? 12 : 6} sx={{ paddingTop: "0 !important" }}>
               <Paper elevation={0} className={styles["box-container"]}>
                 <Paper elevation={0} className={styles.gridTitle}>
                   <div className={styles.gridTitleText}>
                     서초타임
                     <div>
-                      <Link
-                        to="/time/event/notes"
-                        className={`${styles.linkText} ${styles.rT}`}
-                      >
+                      <Link to="/time/event/notes" className={`${styles.linkText} ${styles.rT}`}>
                         더보기
                       </Link>
                     </div>

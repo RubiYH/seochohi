@@ -8,10 +8,7 @@ export default function About(props) {
     <>
       <Navbar type="menu" name={props?.name} />
       <div className="wrapper" style={{ height: "100%" }}>
-        <div
-          className="content column center"
-          style={{ justifyContent: "flex-start" }}
-        >
+        <div className="content column center" style={{ justifyContent: "flex-start" }}>
           <h2>서초하이</h2>
           <p>by 2022 서초고 스타트업 동아리</p>
           <div className="left">
@@ -50,8 +47,7 @@ export default function About(props) {
             </div>
           </div>
           <div className={styles.credits}>
-            Image by vectorjuice on Freepik Student icons created by Freepik -
-            Flaticon
+            Image by vectorjuice on Freepik Student icons created by Freepik - Flaticon
           </div>
         </div>
       </div>

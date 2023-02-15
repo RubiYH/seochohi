@@ -10,9 +10,7 @@ module.exports = function (app) {
 
     getConnection((connection) => {
       connection.query(
-        `SELECT \`Session\` FROM \`users\` WHERE \`ID\`=${connection.escape(
-          userID
-        )}`,
+        `SELECT \`Session\` FROM \`users\` WHERE \`ID\`=${connection.escape(userID)}`,
         async (err, results, fields) => {
           if (err) {
             res.json({
@@ -25,9 +23,7 @@ module.exports = function (app) {
           }
 
           const session =
-            results?.length > 0
-              ? (await JSON.parse(results[0]?.Session)) || null
-              : null;
+            results?.length > 0 ? (await JSON.parse(results[0]?.Session)) || null : null;
 
           const sessionFromCookie = (await req.cookies[".session"]) || null;
 
@@ -38,33 +34,32 @@ module.exports = function (app) {
               userID: null,
               username: null,
             });
-          } else {
-            //인증 완료
-
-            connection.query(
-              `SELECT \`Gender\` FROM \`users\` WHERE \`ID\`=${connection.escape(
-                userID
-              )}`,
-              async (err, results, fields) => {
-                if (err) {
-                  res.json({
-                    status: "error",
-                    message: err.code || null,
-                    fatal: err.fatal || null,
-                  });
-                  console.log(err);
-                  return;
-                }
-
-                res.status(200).json({
-                  status: "success",
-                  userID: userID,
-                  username: username,
-                  gender: results[0]?.Gender,
-                });
-              }
-            );
+            return;
           }
+
+          //인증 완료
+
+          connection.query(
+            `SELECT \`Gender\` FROM \`users\` WHERE \`ID\`=${connection.escape(userID)}`,
+            async (err, results, fields) => {
+              if (err) {
+                res.json({
+                  status: "error",
+                  message: err.code || null,
+                  fatal: err.fatal || null,
+                });
+                console.log(err);
+                return;
+              }
+
+              res.status(200).json({
+                status: "success",
+                userID: userID,
+                username: username,
+                gender: results[0]?.Gender,
+              });
+            }
+          );
         }
       );
     });

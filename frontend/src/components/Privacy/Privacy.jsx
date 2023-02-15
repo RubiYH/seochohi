@@ -1,5 +1,4 @@
 import Navbar from "../Modules/Navbar/Navbar";
-
 import PrivacyText from "./PrivacyText";
 
 export default function Privacy(props) {

@@ -31,6 +31,7 @@ module.exports = function (app) {
             console.log(err);
             return;
           }
+
           //who_liked 리스트를 true false로 전환 & Views 리스트 삭제
 
           let resultModified = results;
@@ -38,11 +39,7 @@ module.exports = function (app) {
           for (var i in resultModified) {
             const whoLiked = JSON.parse(resultModified[i].who_liked);
 
-            if (
-              whoLiked.some(
-                (s) => s.userID === parseInt(userID) && s.username === username
-              )
-            ) {
+            if (whoLiked.some((s) => s.userID === parseInt(userID) && s.username === username)) {
               resultModified[i].who_liked = true;
             } else {
               resultModified[i].who_liked = false;
@@ -54,9 +51,7 @@ module.exports = function (app) {
           //태그 필터
           resultModified =
             tags?.length > 0
-              ? resultModified.filter((r) =>
-                  JSON.parse(r?.Tags).some((s) => tags?.includes(s))
-                )
+              ? resultModified.filter((r) => JSON.parse(r?.Tags).some((s) => tags?.includes(s)))
               : resultModified;
 
           res.status(200).json({

@@ -1,12 +1,11 @@
+import { Card } from "@mui/material";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import settings from "../../settings";
 import { checkSession } from "../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../Modules/Authorization/sessionSwitches";
-import styles from "./MyClass.module.css";
-
-import { Card } from "@mui/material";
 import Navbar from "../Modules/Navbar/Navbar";
+import styles from "./MyClass.module.css";
 import TimeTable from "./MyClass_timetable/TimeTable";
 
 export default function MyClass(props) {

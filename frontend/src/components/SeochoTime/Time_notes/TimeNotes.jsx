@@ -1,7 +1,3 @@
-import { useMediaQuery } from "react-responsive";
-import { MediaQuery } from "../../Modules/MediaQuery";
-import styles from "./TimeNotes.module.css";
-
 import {
   Delete,
   ExpandLess,
@@ -10,35 +6,25 @@ import {
   FavoriteBorder,
   FileUploadRounded,
 } from "@mui/icons-material";
-import {
-  Card,
-  CircularProgress,
-  Collapse,
-  Divider,
-  Fab,
-  Grid,
-  IconButton,
-} from "@mui/material";
+import { Card, CircularProgress, Collapse, Divider, Fab, Grid, IconButton } from "@mui/material";
+import { TransformComponent, TransformWrapper } from "@pronestor/react-zoom-pan-pinch";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import settings from "../../../settings";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
 import convertRemToPixels from "../../Modules/convertRemToPixels";
-import { tags_others, tags_subject } from "./tags";
-
-import Slider from "react-slick";
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
-
-import {
-  TransformComponent,
-  TransformWrapper,
-} from "@pronestor/react-zoom-pan-pinch";
 import { elapsedTime } from "../../Modules/elapsedTime";
+import { MediaQuery } from "../../Modules/MediaQuery";
 import Navbar from "../../Modules/Navbar/Navbar";
+import { tags_others, tags_subject } from "./tags";
+import styles from "./TimeNotes.module.css";
 
 export default function TimeNotes(props) {
   //JWT 인증
@@ -96,8 +82,7 @@ export default function TimeNotes(props) {
   const [selectedTags_subject, setST_subject] = useState([]);
 
   const AddTag_subject = (grade, index) => {
-    if (selectedTags_subject.some((s) => s === tags_subject[grade - 1][index]))
-      return;
+    if (selectedTags_subject.some((s) => s === tags_subject[grade - 1][index])) return;
     setST_subject([...selectedTags_subject, tags_subject[grade - 1][index]]);
   };
 
@@ -138,12 +123,7 @@ export default function TimeNotes(props) {
   const [Notes, setNotes] = useState([]);
   const [expandTag, setET] = useState(false);
 
-  async function fetchNotes(
-    isNew,
-    page,
-    selectedTags_subject,
-    selectedTags_others
-  ) {
+  async function fetchNotes(isNew, page, selectedTags_subject, selectedTags_others) {
     axios
       .get(`${settings.api.domain}/api/event/getNotes/list`, {
         params: {
@@ -299,10 +279,7 @@ export default function TimeNotes(props) {
                     elevation={2}
                     sx={{ borderRadius: "var(--event-box-radius)" }}
                   >
-                    <span
-                      className={styles.tagsTitle}
-                      onClick={() => setET(!expandTag)}
-                    >
+                    <span className={styles.tagsTitle} onClick={() => setET(!expandTag)}>
                       태그 목록
                       {expandTag ? <ExpandLess /> : <ExpandMore />}
                     </span>
@@ -333,14 +310,10 @@ export default function TimeNotes(props) {
                       </div>
                     </Collapse>
                     {/* 선택한 태그 */}
-                    {(selectedTags_subject?.length > 0 ||
-                      selectedTags_others?.length > 0) && (
+                    {(selectedTags_subject?.length > 0 || selectedTags_others?.length > 0) && (
                       <>
                         <Divider sx={{ width: "100%", margin: "8px 0 0 0" }} />
-                        <Card
-                          className={styles.selectedTagsWrapper}
-                          elevation={0}
-                        >
+                        <Card className={styles.selectedTagsWrapper} elevation={0}>
                           {selectedTags_subject?.map((s, i) => (
                             <span
                               key={i}
@@ -348,10 +321,7 @@ export default function TimeNotes(props) {
                               onClick={() => deleteTag_subject(grade, s)}
                             >
                               {s}
-                              <Delete
-                                fontSize="inherit"
-                                sx={{ color: "#ff4569" }}
-                              />
+                              <Delete fontSize="inherit" sx={{ color: "#ff4569" }} />
                             </span>
                           ))}
                           {selectedTags_others?.map((s, i) => (
@@ -362,10 +332,7 @@ export default function TimeNotes(props) {
                               style={{ background: "var(--others-tag-color)" }}
                             >
                               {s}
-                              <Delete
-                                fontSize="inherit"
-                                sx={{ color: "#ff4569" }}
-                              />
+                              <Delete fontSize="inherit" sx={{ color: "#ff4569" }} />
                             </span>
                           ))}
                         </Card>
@@ -388,11 +355,7 @@ export default function TimeNotes(props) {
                       >
                         <div className={styles.NotesHeader}>
                           <span>
-                            <img
-                              src={n?.AvatarURL}
-                              alt=""
-                              className={styles.NotesAvatar}
-                            />
+                            <img src={n?.AvatarURL} alt="" className={styles.NotesAvatar} />
                             {n?.UserID} {n?.Username}
                             {n?.UserID === userData.userID && (
                               <span
@@ -407,10 +370,7 @@ export default function TimeNotes(props) {
                           </span>
                           <span>
                             {n?.UserID === userData.userID && (
-                              <span
-                                onClick={() => deletePost(n)}
-                                className={styles.deletePost}
-                              >
+                              <span onClick={() => deletePost(n)} className={styles.deletePost}>
                                 삭제
                               </span>
                             )}
@@ -459,7 +419,6 @@ export default function TimeNotes(props) {
                             arrows={false}
                             lazyLoad
                             slidesToShow={2}
-                            // rows={JSON.parse(n?.Images)?.length > 2 ? 2 : 1}
                           >
                             {n?.Images &&
                               JSON.parse(n?.Images)?.map((img, index) => (
@@ -473,9 +432,7 @@ export default function TimeNotes(props) {
                                         open: !expandedImg.open,
                                         url: img,
                                       });
-                                      document.querySelector(
-                                        "html"
-                                      ).style.overflow = "hidden";
+                                      document.querySelector("html").style.overflow = "hidden";
                                     }}
                                   />
                                 </div>
@@ -515,9 +472,7 @@ export default function TimeNotes(props) {
                                     open: !expandedImg.open,
                                     url: null,
                                   });
-                                  document.querySelector(
-                                    "html"
-                                  ).style.overflow = "";
+                                  document.querySelector("html").style.overflow = "";
                                 }}
                                 className={styles.expandedImg}
                                 style={{ pointerEvents: "initial" }}
@@ -545,8 +500,7 @@ export default function TimeNotes(props) {
                                   fontSize="small"
                                 />
                               </IconButton>
-                            ) : Likes[n?.PostID] === n?.Likes &&
-                              n?.who_liked ? (
+                            ) : Likes[n?.PostID] === n?.Likes && n?.who_liked ? (
                               <IconButton onClick={() => handleFavorite(n)}>
                                 <Favorite
                                   sx={{
@@ -567,25 +521,18 @@ export default function TimeNotes(props) {
                     </Grid>
                   ))}
                 <div className={styles.loading}>
-                  {isLoading && (
-                    <CircularProgress disableShrink sx={{ margin: "0 auto" }} />
-                  )}
+                  {isLoading && <CircularProgress disableShrink sx={{ margin: "0 auto" }} />}
                 </div>
-                {!isLoading &&
-                  Notes !== null &&
-                  Notes?.at(-1) === undefined && (
-                    <Grid item xs={12} sx={{ textAlign: "center" }}>
-                      <span>게시물이 없습니다.</span>
-                    </Grid>
-                  )}
+                {!isLoading && Notes !== null && Notes?.at(-1) === undefined && (
+                  <Grid item xs={12} sx={{ textAlign: "center" }}>
+                    <span>게시물이 없습니다.</span>
+                  </Grid>
+                )}
               </Grid>
               <div ref={ref} style={{ position: "absolute", bottom: 0 }}></div>
               {/* 플로팅 버튼 */}
               <Link to={`/time/event/notes/new`}>
-                <Fab
-                  color="primary"
-                  sx={{ position: "fixed", right: "24px", bottom: "24px" }}
-                >
+                <Fab color="primary" sx={{ position: "fixed", right: "24px", bottom: "24px" }}>
                   <FileUploadRounded />
                 </Fab>
               </Link>

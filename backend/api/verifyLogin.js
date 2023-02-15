@@ -54,7 +54,6 @@ module.exports = function (app) {
             return;
           }
 
-          // console.log(results);
           const email = results[0]?.Email || null;
           const phone = results[0]?.Phone || null;
           const username = results[0]?.Username || null;
@@ -82,7 +81,6 @@ module.exports = function (app) {
         status: "expired",
         message: "인증 정보가 만료되었습니다.",
       });
-
       return;
     }
 
@@ -94,9 +92,7 @@ module.exports = function (app) {
         //userID로 이메일 가져와서 일치하는지 확인
         getConnection((connection) => {
           connection.query(
-            `SELECT \`Email\` FROM \`users\` WHERE \`ID\`=${connection.escape(
-              userID
-            )}`,
+            `SELECT \`Email\` FROM \`users\` WHERE \`ID\`=${connection.escape(userID)}`,
             (err, results, fields) => {
               if (err) {
                 res.json({
@@ -116,7 +112,6 @@ module.exports = function (app) {
                   status: "unauthorized",
                   message: "인증 정보가 유효하지 않습니다.",
                 });
-
                 return;
               }
 
@@ -129,8 +124,7 @@ module.exports = function (app) {
               //이메일 전송
               sendEmail({
                 to: email,
-                title:
-                  "[서초하이] 새로운 환경에서 로그인: 이메일 본인인증 코드",
+                title: "[서초하이] 새로운 환경에서 로그인: 이메일 본인인증 코드",
                 html: `
                 <h2>새로운 환경에서 로그인이 감지되었습니다.</h2>
                 <span>아래 코드를 입력하여 본인인증을 진행하세요.</span>
@@ -176,8 +170,8 @@ module.exports = function (app) {
       return;
     }
 
-    //인증번호가 일치하면
     if (Cache.get(`${userID}-verifycode`) === Number(code)) {
+      //인증번호가 일치하면
       Cache.del(`${userID}-verifycode`);
       Cache.del(`${userID}-rt`); //rt 삭제
 
@@ -203,10 +197,7 @@ module.exports = function (app) {
     const userInfo = await Firebase.auth().getUser(uid);
     const userByToken = await Firebase.auth().verifyIdToken(accessToken);
 
-    if (
-      uid === userByToken?.uid &&
-      userInfo?.phoneNumber === userByToken.phone_number
-    ) {
+    if (uid === userByToken?.uid && userInfo?.phoneNumber === userByToken.phone_number) {
       //폰 인증 완료
       authComplete(req, res, userID);
     } else {
@@ -223,9 +214,7 @@ module.exports = function (app) {
   function addSession(req, res, userID, session_token) {
     getConnection((connection) => {
       connection.query(
-        `SELECT \`Session\` FROM \`users\` WHERE \`ID\`=${connection.escape(
-          userID
-        )}`,
+        `SELECT \`Session\` FROM \`users\` WHERE \`ID\`=${connection.escape(userID)}`,
         (err, results, field) => {
           if (err) {
             res.json({
@@ -262,10 +251,10 @@ module.exports = function (app) {
 
                 console.log(err);
                 return;
-              } else {
-                console.log(`${userID} : 새 세션 정보를 DB에 저장하였습니다.`);
-                console.log(`[${req.getIP}] ${userID} : 로그인 완료`);
               }
+
+              console.log(`${userID} : 새 세션 정보를 DB에 저장하였습니다.`);
+              console.log(`[${req.getIP}] ${userID} : 로그인 완료`);
             }
           );
         }

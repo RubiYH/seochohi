@@ -1,13 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import { useParams } from "react-router-dom";
 import settings from "../../../settings";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
-import { MediaQuery } from "../../Modules/MediaQuery";
 import Navbar from "../../Modules/Navbar/Navbar";
-
 import styles from "./MyClassQuickNotesView.module.css";
 
 export default function MyClassQuickNotesView(props) {
@@ -29,11 +26,6 @@ export default function MyClassQuickNotesView(props) {
       }
     });
   }, []);
-
-  //responsive : PC
-  const isDesktopOrLaptop = useMediaQuery({
-    query: MediaQuery("PC"),
-  });
 
   const { id } = useParams();
 

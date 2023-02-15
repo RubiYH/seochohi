@@ -1,15 +1,4 @@
-import styles from "./Register.module.css";
-
-import {
-  AppBar,
-  Box,
-  Breadcrumbs,
-  Button,
-  Fade,
-  Modal,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Box, Breadcrumbs, Button, Fade, Modal, Toolbar, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import settings from "../../settings";
@@ -21,6 +10,7 @@ import EnterPassword from "./pages/enterPassword";
 import EnterStudentCard from "./pages/enterStudentCard";
 import EnterStudentInfo from "./pages/enterStudentInfo";
 import EnterUserInfo from "./pages/enterUserInfo";
+import styles from "./Register.module.css";
 
 export default function Register(props) {
   const FormControlFlex = {
@@ -133,14 +123,12 @@ export default function Register(props) {
   const [canGoNext, setCGN] = useState(false);
 
   const NextPage = () => {
-    if (!confirmPrivacy)
-      return alert("약관에 동의하셔야 회원가입이 가능합니다.");
+    if (!confirmPrivacy) return alert("약관에 동의하셔야 회원가입이 가능합니다.");
     if (page === 3 && !email && !phone)
       return alert("본인의 전화번호와 이메일 중 최소 한 가지를 입력해주세요.");
     if (page === 4 && StudentCard?.length < 1)
       return alert("재학생 인증을 위해 학생증 카드 사진을 업로드해주세요.");
-    if (confirmPrivacy && !canGoNext)
-      return alert("필수 정보를 모두 입력해주세요.");
+    if (confirmPrivacy && !canGoNext) return alert("필수 정보를 모두 입력해주세요.");
 
     setPage(page + 1);
   };
@@ -223,11 +211,7 @@ export default function Register(props) {
                       완료
                     </Button>
                   ) : (
-                    <Button
-                      variant="contained"
-                      onClick={() => NextPage()}
-                      disableElevation
-                    >
+                    <Button variant="contained" onClick={() => NextPage()} disableElevation>
                       다음
                     </Button>
                   )}
@@ -370,12 +354,10 @@ export default function Register(props) {
                   회원가입 요청을 완료하였습니다.
                 </span>
                 <span>
-                  재학생 인증은 1일 이내로 처리되며, 재학생 인증 완료 후 가입이
-                  승인됩니다.
+                  재학생 인증은 1일 이내로 처리되며, 재학생 인증 완료 후 가입이 승인됩니다.
                 </span>
                 <span style={{ color: "#d32f2f" }}>
-                  재학생 인증 과정에 문제가 있을 시 회원가입이 취소될 수
-                  있습니다.
+                  재학생 인증 과정에 문제가 있을 시 회원가입이 취소될 수 있습니다.
                 </span>
                 <Button
                   variant="contained"

@@ -21,13 +21,7 @@ import {
 } from "@mui/material";
 
 //icons
-import {
-  ExpandLess,
-  ExpandMore,
-  FiberNew,
-  Help,
-  Info,
-} from "@mui/icons-material";
+import { ExpandLess, ExpandMore, FiberNew, Help, Info } from "@mui/icons-material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import CloseIcon from "@mui/icons-material/Close";
 import HomeIcon from "@mui/icons-material/Home";
@@ -53,26 +47,24 @@ export default function Navbar(props) {
   const [isPending, setPending] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(`${settings.api.domain}/api/auth`, { withCredentials: true })
-      .then((res) => {
-        switch (res.data.status) {
-          case "success":
+    axios.get(`${settings.api.domain}/api/auth`, { withCredentials: true }).then((res) => {
+      switch (res.data.status) {
+        case "success":
+          setLogIn(false);
+          break;
+        case "unauthorized":
+          if (res.data.pending) {
+            setPending(true);
             setLogIn(false);
-            break;
-          case "unauthorized":
-            if (res.data.pending) {
-              setPending(true);
-              setLogIn(false);
-            } else {
-              setLogIn(true);
-            }
-            break;
-          default:
+          } else {
             setLogIn(true);
-            break;
-        }
-      });
+          }
+          break;
+        default:
+          setLogIn(true);
+          break;
+      }
+    });
   }, []);
 
   function Pending() {
@@ -142,47 +134,6 @@ export default function Navbar(props) {
     axios.get(`${settings.api.domain}/api/saveMemo`);
   }
 
-  //PC menus
-  // wiki
-  const [wiki_anchorEl, wiki_setAnchorEl] = useState(null);
-  const wiki_open = Boolean(wiki_anchorEl);
-  const wiki_handleClick = (event) => {
-    wiki_setAnchorEl(event.currentTarget);
-  };
-  const wiki_handleClose = () => {
-    wiki_setAnchorEl(null);
-  };
-
-  //forest
-  const [forest_anchorEl, forest_setAnchorEl] = useState(null);
-  const forest_open = Boolean(forest_anchorEl);
-  const forest_handleClick = (event) => {
-    forest_setAnchorEl(event.currentTarget);
-  };
-  const forest_handleClose = () => {
-    forest_setAnchorEl(null);
-  };
-
-  //time
-  const [time_anchorEl, time_setAnchorEl] = useState(null);
-  const time_open = Boolean(time_anchorEl);
-  const time_handleClick = (event) => {
-    time_setAnchorEl(event.currentTarget);
-  };
-  const time_handleClose = () => {
-    time_setAnchorEl(null);
-  };
-
-  //myclass
-  const [myclass_anchorEl, myclass_setAnchorEl] = useState(null);
-  const myclass_open = Boolean(myclass_anchorEl);
-  const myclass_handleClick = (event) => {
-    myclass_setAnchorEl(event.currentTarget);
-  };
-  const myclass_handleClose = () => {
-    myclass_setAnchorEl(null);
-  };
-
   //responsive : PC
   const isDesktopOrLaptop = useMediaQuery({
     query: MediaQuery("PC"),
@@ -248,8 +199,6 @@ export default function Navbar(props) {
   return (
     <>
       <div className={styles.navbar} style={props?.style}>
-        {/* PC 네비바 */}
-
         {/* 모바일 네비바 */}
         {!isDesktopOrLaptop && (
           <Box sx={{ flexGrow: 1 }}>
@@ -279,9 +228,7 @@ export default function Navbar(props) {
                       <MenuIcon sx={{ color: textColor }} />
                     </IconButton>
                   )}
-                  {(navType === "back" ||
-                    navType === "login" ||
-                    navType === "onlyback") && (
+                  {(navType === "back" || navType === "login" || navType === "onlyback") && (
                     <IconButton
                       sx={{ color: textColor }}
                       onClick={() => {
@@ -337,9 +284,7 @@ export default function Navbar(props) {
                                 <HomeIcon />
                               </IconButton>
                             </Link>
-                            <IconButton
-                              onClick={() => onChange("sidebar", !sidebar)}
-                            >
+                            <IconButton onClick={() => onChange("sidebar", !sidebar)}>
                               <CloseIcon />
                             </IconButton>
                           </Typography>
@@ -353,10 +298,7 @@ export default function Navbar(props) {
                               onChange("sub_wiki", !sub_wiki);
                             }}
                           >
-                            <ListItemText
-                              primary="서초위키"
-                              sx={{ marginLeft: "8px" }}
-                            />
+                            <ListItemText primary="서초위키" sx={{ marginLeft: "8px" }} />
                             {sub_wiki ? <ExpandLess /> : <ExpandMore />}
                           </ListItemButton>
                           <Collapse in={sub_wiki} timeout="auto" unmountOnExit>
@@ -391,10 +333,7 @@ export default function Navbar(props) {
                         >
                           <List>
                             <ListItemButton>
-                              <ListItemText
-                                primary="서초고숲"
-                                sx={{ marginLeft: "8px" }}
-                              />
+                              <ListItemText primary="서초고숲" sx={{ marginLeft: "8px" }} />
                             </ListItemButton>
                           </List>
                         </Link>
@@ -405,13 +344,8 @@ export default function Navbar(props) {
                               onChange("sub_time", !sub_time);
                             }}
                           >
-                            <ListItemText
-                              primary="서초타임"
-                              sx={{ marginLeft: "8px" }}
-                            />
-                            {isNew && isNew?.time ? (
-                              <FiberNew color="error" />
-                            ) : null}
+                            <ListItemText primary="서초타임" sx={{ marginLeft: "8px" }} />
+                            {isNew && isNew?.time ? <FiberNew color="error" /> : null}
                             {/* {sub_time ? <ExpandLess /> : <ExpandMore />} */}
                           </ListItemButton>
                           <Collapse in={sub_time} timeout="auto" unmountOnExit>
@@ -424,9 +358,7 @@ export default function Navbar(props) {
                                   onClick={(e) => {
                                     if (m?.disabled) {
                                       e.preventDefault();
-                                      alert(
-                                        `${m.name} 이벤트가 종료되었습니다.`
-                                      );
+                                      alert(`${m.name} 이벤트가 종료되었습니다.`);
                                       return;
                                     }
                                     onChange("sidebar", !sidebar);
@@ -451,17 +383,10 @@ export default function Navbar(props) {
                                 onChange("sub_myclass", !sub_myclass);
                               }}
                             >
-                              <ListItemText
-                                primary="나의 학급"
-                                sx={{ marginLeft: "8px" }}
-                              />
+                              <ListItemText primary="나의 학급" sx={{ marginLeft: "8px" }} />
                               {sub_myclass ? <ExpandLess /> : <ExpandMore />}
                             </ListItemButton>
-                            <Collapse
-                              in={sub_myclass}
-                              timeout="auto"
-                              unmountOnExit
-                            >
+                            <Collapse in={sub_myclass} timeout="auto" unmountOnExit>
                               <List component="div" disablePadding>
                                 {myclassList.map((m) => (
                                   <Link
@@ -469,15 +394,11 @@ export default function Navbar(props) {
                                     className={styles["nav_sub_a"]}
                                     key={m.name}
                                     onClick={(e) => {
-                                      if (m?.enabled === false)
-                                        return e.preventDefault();
+                                      if (m?.enabled === false) return e.preventDefault();
                                       onChange("sidebar", !sidebar);
                                     }}
                                   >
-                                    <ListItemButton
-                                      sx={{ pl: 4 }}
-                                      disabled={m?.enabled === false}
-                                    >
+                                    <ListItemButton sx={{ pl: 4 }} disabled={m?.enabled === false}>
                                       <ListItemText primary={`• ${m.name}`} />
                                     </ListItemButton>
                                   </Link>
@@ -498,10 +419,7 @@ export default function Navbar(props) {
                             }}
                           >
                             <ButtonBase>
-                              <SettingsIcon
-                                sx={{ marginLeft: "8px" }}
-                                color="action"
-                              />
+                              <SettingsIcon sx={{ marginLeft: "8px" }} color="action" />
                               <Typography p={1}>설정</Typography>
                             </ButtonBase>
                           </Link>
@@ -527,10 +445,7 @@ export default function Navbar(props) {
                           }}
                         >
                           <ButtonBase>
-                            <Info
-                              sx={{ marginLeft: "8px" }}
-                              color="secondary"
-                            />
+                            <Info sx={{ marginLeft: "8px" }} color="secondary" />
                             <Typography p={1}>정보</Typography>
                           </ButtonBase>
                         </Link>
@@ -548,11 +463,7 @@ export default function Navbar(props) {
           </Box>
         )}
       </div>
-      <Modal
-        open={pendingOpen}
-        onClose={() => setPO(false)}
-        closeAfterTransition
-      >
+      <Modal open={pendingOpen} onClose={() => setPO(false)} closeAfterTransition>
         <Fade in={pendingOpen}>
           <Box
             sx={{
@@ -581,13 +492,12 @@ export default function Navbar(props) {
             <br />
             <div style={{ textAlign: "left" }}>
               <span style={{ fontSize: "1rem" }}>
-                재학생 인증은 1일 이내로 처리되며, 재학생 인증 완료 후
-                로그인하실 수 있습니다.
+                재학생 인증은 1일 이내로 처리되며, 재학생 인증 완료 후 로그인하실 수 있습니다.
               </span>
               <br />
               <span style={{ display: "block" }}>
-                재학생 인증 완료 시 가입이 승인되며, 인증 과정에 문제가 있을 시
-                가입이 취소될 수 있습니다.
+                재학생 인증 완료 시 가입이 승인되며, 인증 과정에 문제가 있을 시 가입이 취소될 수
+                있습니다.
               </span>
               <span
                 style={{

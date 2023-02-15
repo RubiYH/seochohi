@@ -41,11 +41,7 @@ export default function MainBanner(props) {
           sx={{
             paddingTop: "0 !important",
             paddingBottom: "1rem",
-            height: TabletLayout
-              ? null
-              : isAuth
-              ? "calc(var(--paper-height) - 14rem);"
-              : null,
+            height: TabletLayout ? null : isAuth ? "calc(var(--paper-height) - 14rem);" : null,
           }}
         >
           <Card>
@@ -55,9 +51,7 @@ export default function MainBanner(props) {
                   elevation={2}
                   className={styles["banner-container"]}
                   sx={{
-                    height: TabletLayout
-                      ? null
-                      : "calc(var(--paper-height) - 14rem);",
+                    height: TabletLayout ? null : "calc(var(--paper-height) - 14rem);",
                   }}
                 >
                   <img

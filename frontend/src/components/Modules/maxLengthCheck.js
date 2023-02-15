@@ -1,9 +1,6 @@
 const maxLengthCheck = (e, minLength, maxLength, callback) => {
   return new Promise((resolve, reject) => {
-    if (
-      minLength !== null &&
-      String(e.target?.value).trim().length <= minLength
-    ) {
+    if (minLength !== null && String(e.target?.value).trim().length <= minLength) {
       resolve({
         status: true,
         message: `최소 ${minLength}자 이상 입력해주세요.`,

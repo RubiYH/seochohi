@@ -11,9 +11,7 @@ module.exports = function (app) {
 
     getConnection((connection) => {
       connection.query(
-        `SELECT \`Notes\` FROM \`quicknotes\` WHERE \`ID\`=${connection.escape(
-          userID
-        )}`,
+        `SELECT \`Notes\` FROM \`quicknotes\` WHERE \`ID\`=${connection.escape(userID)}`,
         (err, results, fields) => {
           if (err) {
             res.json({
@@ -23,48 +21,52 @@ module.exports = function (app) {
             });
             console.log(err);
             return;
-          } else {
-            if (results.length < 1) {
-              res.json({
-                status: "empty",
-                message:
-                  "메모가 없습니다. 아래 '연필' 아이콘을 눌러 새 메모를 작성하세요.",
-              });
-            } else {
-              let result = [];
+          }
 
-              if (type === "list") {
-                results.forEach((r) => {
-                  result.push(
-                    JSON.parse(r.Notes, (key, value) => {
-                      if (key === "content") return undefined;
+          if (results.length < 1) {
+            res.json({
+              status: "empty",
+              message: "메모가 없습니다. 아래 '연필' 아이콘을 눌러 새 메모를 작성하세요.",
+            });
+            return;
+          }
 
-                      return value;
-                    })[0]
-                  );
-                });
+          let result = [];
 
-                res.json({
-                  status: "success",
-                  data: result,
-                  message: `${result.length}개의 메모`,
-                });
-              } else if (type === "view") {
-                let result = results.find(
-                  (r) => JSON.parse(r.Notes)[0].id === parseInt(id)
+          switch (type) {
+            case "list":
+              results.forEach((r) => {
+                result.push(
+                  JSON.parse(r.Notes, (key, value) => {
+                    if (key === "content") return undefined;
+
+                    return value;
+                  })[0]
                 );
+              });
 
-                res.json({
-                  status: "success",
-                  data: JSON.parse(result.Notes)[0],
-                });
-              } else {
-                res.json({
-                  status: "error",
-                  message: "메모를 찾을 수 없습니다.",
-                });
-              }
-            }
+              res.json({
+                status: "success",
+                data: result,
+                message: `${result.length}개의 메모`,
+              });
+              break;
+
+            case "view":
+              let result = results.find((r) => JSON.parse(r.Notes)[0].id === parseInt(id));
+
+              res.json({
+                status: "success",
+                data: JSON.parse(result.Notes)[0],
+              });
+              break;
+
+            default:
+              res.json({
+                status: "error",
+                message: "메모를 찾을 수 없습니다.",
+              });
+              break;
           }
         }
       );

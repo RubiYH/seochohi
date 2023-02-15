@@ -1,30 +1,26 @@
-import { useMediaQuery } from "react-responsive";
-import { MediaQuery } from "../../Modules/MediaQuery";
-import styles from "./Forest.module.css";
-
+import { Edit } from "@mui/icons-material";
 import CommentIcon from "@mui/icons-material/Comment";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Card, CircularProgress, Fab, Grid } from "@mui/material";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import settings from "../../../settings";
-import { Tags } from "./Tags";
-
 import SearchIcon from "@mui/icons-material/Search";
-import { Button, Menu, MenuItem } from "@mui/material";
+import { Button, Card, CircularProgress, Fab, Grid, Menu, MenuItem } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import { styled } from "@mui/material/styles";
-
-import { Edit } from "@mui/icons-material";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
+import { useMediaQuery } from "react-responsive";
 import { Link } from "react-router-dom";
+import settings from "../../../settings";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
 import convertRemToPixels from "../../Modules/convertRemToPixels";
 import { elapsedTime } from "../../Modules/elapsedTime";
+import { MediaQuery } from "../../Modules/MediaQuery";
 import Navbar from "../../Modules/Navbar/Navbar";
+import styles from "./Forest.module.css";
 import { SortBy } from "./SortBy";
+import { Tags } from "./Tags";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -128,9 +124,7 @@ export default function Forest(props) {
 
             //의견 없음
             if (res.data?.data.length < 1) {
-              return isNew
-                ? setForestList([])
-                : setForestList(forestList?.concat([]));
+              return isNew ? setForestList([]) : setForestList(forestList?.concat([]));
             }
 
             if (isNew) {
@@ -210,10 +204,7 @@ export default function Forest(props) {
     borderRadius: "var(--paper-radius)",
     flexDirection: "column",
     justifyContent: "space-between",
-    background:
-      localStorage.getItem("theme") === "dark"
-        ? "rgba(255, 255, 255, 0.12)"
-        : "#fff",
+    background: localStorage.getItem("theme") === "dark" ? "rgba(255, 255, 255, 0.12)" : "#fff",
   };
 
   const menuBtnStyle = {
@@ -230,13 +221,9 @@ export default function Forest(props) {
         {isAuth && (
           <>
             <div className="content community">
-              {/* <div className={styles.guideline}>가이드라인(이미지)</div> */}
-
               {/* 툴바 */}
               <div className={styles.selectedOptions}>
-                <span className={`${styles.tags} ${styles[Tag]}`}>
-                  {Tags.get(Tag)}
-                </span>
+                <span className={`${styles.tags} ${styles[Tag]}`}>{Tags.get(Tag)}</span>
                 {orderBy && (
                   <span
                     className={`${styles.tags} ${styles.SortBy}`}
@@ -301,10 +288,7 @@ export default function Forest(props) {
                         localStorage.getItem("theme") === "dark"
                           ? "rgba(255, 255, 255, 0.12) !important"
                           : "#fff",
-                      color:
-                        localStorage.getItem("theme") === "dark"
-                          ? "#fff"
-                          : "#000",
+                      color: localStorage.getItem("theme") === "dark" ? "#fff" : "#000",
                     }}
                     id="sort-button"
                     aria-controls={open_sort ? "sort-menu" : undefined}
@@ -356,9 +340,7 @@ export default function Forest(props) {
 
                 <Search>
                   <SearchIconWrapper>
-                    <SearchIcon
-                      color={searchContent?.length > 0 ? "info" : "inherit"}
-                    />
+                    <SearchIcon color={searchContent?.length > 0 ? "info" : "inherit"} />
                   </SearchIconWrapper>
                   <StyledInputBase
                     placeholder="검색"
@@ -368,12 +350,7 @@ export default function Forest(props) {
                       setTimeout(() => {
                         if (searchQuery === e.target.value.toString()) {
                           setSearchContent(e.target.value.toString());
-                          fetchPosts(
-                            null,
-                            orderBy,
-                            e.target.value.toString(),
-                            true
-                          );
+                          fetchPosts(null, orderBy, e.target.value.toString(), true);
                         }
                       }, 300);
                     }}
@@ -393,14 +370,8 @@ export default function Forest(props) {
                             xs={isTabletOrMobile ? 12 : 6}
                             key={`${l?.Tags}/${l?.PostID}/${l?.UserID}`}
                           >
-                            <Link
-                              to={`/forest/${l?.Tags}/${l?.UserID}/${l?.PostID}`}
-                            >
-                              <Card
-                                elevation={0}
-                                sx={CardStyle}
-                                className={styles.listbox}
-                              >
+                            <Link to={`/forest/${l?.Tags}/${l?.UserID}/${l?.PostID}`}>
+                              <Card elevation={0} sx={CardStyle} className={styles.listbox}>
                                 <div className={styles.postbox}>
                                   <div className={styles.header}>
                                     <img
@@ -412,12 +383,8 @@ export default function Forest(props) {
                                       {l?.UserID} {l?.Username}
                                     </div>
                                   </div>
-                                  <span className={`${styles.tags}`}>
-                                    {Tags.get(l?.Tags)}
-                                  </span>
-                                  <span className={styles.content}>
-                                    {l?.Content}
-                                  </span>
+                                  <span className={`${styles.tags}`}>{Tags.get(l?.Tags)}</span>
+                                  <span className={styles.content}>{l?.Content}</span>
                                 </div>
                                 <div
                                   className={styles.infobox}
@@ -468,32 +435,19 @@ export default function Forest(props) {
                     </>
                   )}
                   <div className={styles.loading}>
-                    {isLoading && (
-                      <CircularProgress
-                        disableShrink
-                        sx={{ margin: "0 auto" }}
-                      />
-                    )}
+                    {isLoading && <CircularProgress disableShrink sx={{ margin: "0 auto" }} />}
                   </div>
-                  {!isLoading &&
-                    forestList !== null &&
-                    forestList?.at(-1) === undefined && (
-                      <Grid item xs={12} sx={{ textAlign: "center" }}>
-                        <span>의견이 없습니다.</span>
-                      </Grid>
-                    )}
+                  {!isLoading && forestList !== null && forestList?.at(-1) === undefined && (
+                    <Grid item xs={12} sx={{ textAlign: "center" }}>
+                      <span>의견이 없습니다.</span>
+                    </Grid>
+                  )}
                 </Grid>
-                <div
-                  ref={ref}
-                  style={{ position: "absolute", bottom: 0 }}
-                ></div>
+                <div ref={ref} style={{ position: "absolute", bottom: 0 }}></div>
               </div>
               {/* 플로팅 버튼 */}
               <Link to={`/forest/new#${Tag}`}>
-                <Fab
-                  color="primary"
-                  sx={{ position: "fixed", right: "24px", bottom: "24px" }}
-                >
+                <Fab color="primary" sx={{ position: "fixed", right: "24px", bottom: "24px" }}>
                   <Edit />
                 </Fab>
               </Link>

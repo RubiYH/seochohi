@@ -6,7 +6,6 @@ const Subjects = require("../files/Subjects").Subjects;
 module.exports = function (app) {
   app.get("/api/getexamfileslist/", authJWT, function (req, res) {
     let request = req.query;
-    // console.log(request);
 
     try {
       let grade = request.grade;
@@ -31,17 +30,11 @@ module.exports = function (app) {
           function getSubject() {
             switch (Number(rawfiledata[0])) {
               case 1:
-                return Subjects.first.find(
-                  (s) => s.value === `${rawfiledata[3]}`
-                ).name;
+                return Subjects.first.find((s) => s.value === `${rawfiledata[3]}`).name;
               case 2:
-                return Subjects.second.find(
-                  (s) => s.value === `${rawfiledata[3]}`
-                ).name;
+                return Subjects.second.find((s) => s.value === `${rawfiledata[3]}`).name;
               case 3:
-                return Subjects.third.find(
-                  (s) => s.value === `${rawfiledata[3]}`
-                ).name;
+                return Subjects.third.find((s) => s.value === `${rawfiledata[3]}`).name;
               default:
                 return "N/A";
             }
@@ -51,17 +44,12 @@ module.exports = function (app) {
 
           if (
             grade === rawfiledata[0] &&
-            Object.values(semesterTypes).includes(
-              rawfiledata[1] + "/" + rawfiledata[2]
-            ) &&
+            Object.values(semesterTypes).includes(rawfiledata[1] + "/" + rawfiledata[2]) &&
             Object.values(subject).includes(`${rawfiledata[3]}`)
           ) {
             fileinfo.push({
               rawfilename: rawfilename,
-              name: rawfilename
-                .replace(".pdf", "")
-                .replace(filedata[0], "")
-                .trim(),
+              name: rawfilename.replace(".pdf", "").replace(filedata[0], "").trim(),
               data: rawfiledata,
               year: rawfiledata[5],
               grade: Number(rawfiledata[0]),
@@ -94,6 +82,7 @@ module.exports = function (app) {
               name: rawfilename,
             });
 
+            //분류
             filelist.sort((a, b) => {
               if (a.subjectnumber > b.subjectnumber) {
                 return 1;
@@ -107,7 +96,6 @@ module.exports = function (app) {
           }
         });
 
-        // console.log(fileinfo);
         if (fileinfo.length > 0) {
           res.json({
             status: "success",
@@ -121,12 +109,7 @@ module.exports = function (app) {
         }
       });
     } catch (err) {
-      console.log(
-        "----------- Error -----------\nURL: " +
-          req.url +
-          "\nErr: " +
-          err.toString()
-      );
+      console.log("----------- Error -----------\nURL: " + req.url + "\nErr: " + err.toString());
       res.json({
         status: "error",
         message: "오류가 발생하였습니다.",

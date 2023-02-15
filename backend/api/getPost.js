@@ -13,9 +13,7 @@ module.exports = function (app) {
 
     getConnection((connection) => {
       connection.query(
-        `SELECT * FROM \`${getTable(
-          table
-        )}\` WHERE \`PostID\`=${connection.escape(
+        `SELECT * FROM \`${getTable(table)}\` WHERE \`PostID\`=${connection.escape(
           pid
         )} AND \`UserID\`=${connection.escape(uid)}`,
         (err, results, field) => {
@@ -27,28 +25,28 @@ module.exports = function (app) {
             });
             console.log(err);
             return;
-          } else {
-            let data = [
-              {
-                ...results[0],
-                Views: "[]",
-                who_liked: "[]",
-                Username: results[0]?.Username.slice(0, 1).padEnd(3, "*"),
-              },
-            ];
+          }
 
-            if (results.length > 0) {
-              res.status(200).json({
-                status: "success",
-                data: data,
-              });
-            } else {
-              res.status(200).json({
-                status: "error",
-                message: "의견이 존재하지 않습니다.",
-                data: [],
-              });
-            }
+          let data = [
+            {
+              ...results[0],
+              Views: "[]",
+              who_liked: "[]",
+              Username: results[0]?.Username.slice(0, 1).padEnd(3, "*"),
+            },
+          ];
+
+          if (results.length > 0) {
+            res.status(200).json({
+              status: "success",
+              data: data,
+            });
+          } else {
+            res.status(200).json({
+              status: "error",
+              message: "의견이 존재하지 않습니다.",
+              data: [],
+            });
           }
         }
       );

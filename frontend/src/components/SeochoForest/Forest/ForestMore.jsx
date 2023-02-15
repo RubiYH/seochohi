@@ -1,9 +1,3 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import settings from "../../../settings";
-import styles from "./ForestMore.module.css";
-
 import {
   ArrowCircleRight,
   AttachFile,
@@ -14,26 +8,21 @@ import {
   Favorite,
   FavoriteBorder,
 } from "@mui/icons-material";
-
-import {
-  Card,
-  Collapse,
-  Divider,
-  IconButton,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { useRef } from "react";
+import { Card, Collapse, Divider, IconButton, TextField, Typography } from "@mui/material";
+import axios from "axios";
+import { saveAs } from "file-saver";
+import { useEffect, useRef, useState } from "react";
+import { useParams } from "react-router-dom";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
+import settings from "../../../settings";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
-import { maxLengthCheck } from "../../Modules/maxLengthCheck";
-
-import { saveAs } from "file-saver";
 import { elapsedTime } from "../../Modules/elapsedTime";
+import { maxLengthCheck } from "../../Modules/maxLengthCheck";
 import Navbar from "../../Modules/Navbar/Navbar";
+import styles from "./ForestMore.module.css";
 import { Tags } from "./Tags";
 
 export default function ForestMore(props) {
@@ -61,7 +50,6 @@ export default function ForestMore(props) {
   const [postData, setPostData] = useState([]);
   const [avatarURL, setAvatarURL] = useState(null);
   const [Likes, setLikes] = useState(null);
-  const [comments, setComments] = useState(null);
 
   const [commentAnimationStyle, setCAS] = useState({ maxHeight: "3rem" });
   const [newComment, setNC] = useState(null);
@@ -103,9 +91,7 @@ export default function ForestMore(props) {
       });
   }, [isAuth]);
 
-  const fetchComments = postData?.Comments
-    ? JSON.parse(postData?.Comments) || []
-    : [];
+  const fetchComments = postData?.Comments ? JSON.parse(postData?.Comments) || [] : [];
 
   const inputRef = useRef(null);
 
@@ -134,8 +120,7 @@ export default function ForestMore(props) {
             showAddButton(false);
             setCAS({
               maxHeight: "3rem",
-              paddingTop:
-                document.activeElement === inputRef.current ? "1rem" : 0,
+              paddingTop: document.activeElement === inputRef.current ? "1rem" : 0,
             });
 
             //데이터 갱신
@@ -253,10 +238,7 @@ export default function ForestMore(props) {
             break;
 
           default:
-            alert(
-              "댓글을 삭제하는 도중에 오류가 발생하였습니다. " +
-                res.data.message
-            );
+            alert("댓글을 삭제하는 도중에 오류가 발생하였습니다. " + res.data.message);
             break;
         }
       });
@@ -358,8 +340,7 @@ export default function ForestMore(props) {
                                 open: !expandedImg.open,
                                 url: i,
                               });
-                              document.querySelector("html").style.overflow =
-                                "hidden";
+                              document.querySelector("html").style.overflow = "hidden";
                             }}
                           />
                         </div>
@@ -438,10 +419,7 @@ export default function ForestMore(props) {
                   }}
                 >
                   {isFavorite ? (
-                    <Favorite
-                      sx={{ color: "rgb(255, 26, 63)" }}
-                      fontSize="small"
-                    />
+                    <Favorite sx={{ color: "rgb(255, 26, 63)" }} fontSize="small" />
                   ) : (
                     <FavoriteBorder fontSize="small" />
                   )}
@@ -455,9 +433,7 @@ export default function ForestMore(props) {
           </Card>
           <br />
           <Card className={styles.comments}>
-            <span style={{ display: "block", margin: 0 }}>
-              댓글 {postData.total_comments}
-            </span>
+            <span style={{ display: "block", margin: 0 }}>댓글 {postData.total_comments}</span>
             {postData &&
               fetchComments.length > 0 &&
               fetchComments?.map((c) => {
@@ -474,36 +450,25 @@ export default function ForestMore(props) {
                             justifyContent: "flex-start",
                           }}
                         >
-                          <img
-                            className={styles.AvatarIcon}
-                            src={c.AvatarURL}
-                            alt=""
-                          />
+                          <img className={styles.AvatarIcon} src={c.AvatarURL} alt="" />
                           <span
                             style={{
-                              color:
-                                localStorage.getItem("theme") === "dark"
-                                  ? "#fff"
-                                  : "#000",
+                              color: localStorage.getItem("theme") === "dark" ? "#fff" : "#000",
                             }}
                           >
                             {c.userID} {c.username}
                             {c.userID === userData.userID && (
-                              <span style={{ color: "var(--highlight-user)" }}>
-                                {" "}
-                                나
-                              </span>
+                              <span style={{ color: "var(--highlight-user)" }}> 나</span>
                             )}
                           </span>
-                          {c.userID === userData.userID &&
-                            c.username === userData.username && (
-                              <span
-                                className={styles.deleteComment}
-                                onClick={() => deleteComment(c?.commentID)}
-                              >
-                                삭제
-                              </span>
-                            )}
+                          {c.userID === userData.userID && c.username === userData.username && (
+                            <span
+                              className={styles.deleteComment}
+                              onClick={() => deleteComment(c?.commentID)}
+                            >
+                              삭제
+                            </span>
+                          )}
                         </div>
                         <div className={styles.commentDate}>
                           <span>{elapsedTime(c.Date)}</span>

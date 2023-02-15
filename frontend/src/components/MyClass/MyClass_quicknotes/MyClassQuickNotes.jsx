@@ -1,7 +1,3 @@
-import { useMediaQuery } from "react-responsive";
-import { MediaQuery } from "../../Modules/MediaQuery";
-import styles from "./MyClassQuickNotes.module.css";
-
 import { Edit } from "@mui/icons-material";
 import { Card, CardActionArea, Divider, Fab } from "@mui/material";
 import axios from "axios";
@@ -11,6 +7,7 @@ import settings from "../../../settings";
 import { checkSession } from "../../Modules/Authorization/checkSession";
 import { switchSessionResult } from "../../Modules/Authorization/sessionSwitches";
 import Navbar from "../../Modules/Navbar/Navbar";
+import styles from "./MyClassQuickNotes.module.css";
 
 export default function MyClassQuickNotes(props) {
   //JWT 인증
@@ -31,11 +28,6 @@ export default function MyClassQuickNotes(props) {
       }
     });
   }, []);
-
-  //responsive : PC
-  const isDesktopOrLaptop = useMediaQuery({
-    query: MediaQuery("PC"),
-  });
 
   const [status, setStatus] = useState(null);
   const [notes, setNotes] = useState([]);
@@ -79,17 +71,11 @@ export default function MyClassQuickNotes(props) {
         <div className="content column">
           {notes?.length > 0 &&
             notes?.map((n) => (
-              <Link
-                to={`/myclass/quicknotes/${n.id}`}
-                className={styles.noteCard}
-                key={n.id}
-              >
+              <Link to={`/myclass/quicknotes/${n.id}`} className={styles.noteCard} key={n.id}>
                 <Card elevation={0}>
                   <CardActionArea>
                     <h2>{n.title}</h2>
-                    <span className={styles.lastEditedAt}>
-                      마지막 수정: {n.lastEditedAt}
-                    </span>
+                    <span className={styles.lastEditedAt}>마지막 수정: {n.lastEditedAt}</span>
                     <Divider variant="fullWidth" sx={{ marginTop: "12px" }} />
                   </CardActionArea>
                 </Card>
@@ -97,10 +83,7 @@ export default function MyClassQuickNotes(props) {
             ))}
           {/* 플로팅 버튼 */}
           <Link to="/myclass/quicknotes/new">
-            <Fab
-              color="primary"
-              sx={{ position: "fixed", right: "24px", bottom: "24px" }}
-            >
+            <Fab color="primary" sx={{ position: "fixed", right: "24px", bottom: "24px" }}>
               <Edit />
             </Fab>
           </Link>
