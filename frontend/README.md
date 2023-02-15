@@ -21,3 +21,5 @@
 >   게시글 무한 스크롤 기능 구현
 > - ## [Slick-Carousel](https://github.com/kenwheeler/slick)
 >   이미지 좌우 스크롤 기능 구현
+> - ## [AOS](https://michalsnik.github.io/aos)
+>   스크롤 시 요소에 애니메이션 효과 추가

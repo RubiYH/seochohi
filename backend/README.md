@@ -22,8 +22,10 @@
 > - ## [Helmet](https://helmetjs.github.io)
 >   xss 필터링, 클릭재킹 차단, HSTS 설정 등을 통해 보안 강화
 > - ## [Express Rate Limit](https://github.com/express-rate-limit/express-rate-limit)
->   API 반복 요청 횟수 제한을 통해 Dos 공격 예방
+>   API 반복 요청 횟수 제한을 통해 DoS 공격 예방
 > - ## [Nodemailer](https://nodemailer.com/about)
 >   메일로 인증 번호 전송 자동화
+> - ## [Node-Cache](https://github.com/node-cache/node-cache)
+>   일회성 인증 번호를 메모리에 임시 저장 및 삭제
 > - ## [Glob](https://github.com/isaacs/node-glob)
 >   분산된 코드 파일 자동 import 및 기출문제 PDF 파일 필터링 기능 구현
