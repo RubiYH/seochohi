@@ -26,7 +26,7 @@
 
 - #### [라이트 모드](./assets/screenshots/light)
 
-- #### [다크 모드](/.assets/screenshots/dark)
+- #### [다크 모드](./assets/screenshots/dark)
 
 ---
 
