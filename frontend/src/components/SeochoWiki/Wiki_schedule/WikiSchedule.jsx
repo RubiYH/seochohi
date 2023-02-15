@@ -1,7 +1,7 @@
+import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import dayGridPlugin from "@fullcalendar/daygrid"; // a plugin!
 import googleCalendarPlugin from "@fullcalendar/google-calendar";
 import interactionPlugin from "@fullcalendar/interaction";
-import FullCalendar from "@fullcalendar/react"; // must go before plugins
 import { Card, Checkbox, FormControlLabel } from "@mui/material";
 import { useEffect, useMemo, useState } from "react";
 import { useMediaQuery } from "react-responsive";
