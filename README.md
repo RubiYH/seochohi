@@ -16,17 +16,17 @@
 
 ### [홍보 포스터]
 
-<img src="./assets/ad.png" width="30%" title="서초하이 홍보 포스터" alt="서초하이 홍보 포스터 이미지" />
+> <img src="./assets/ad.png" width="30%" title="서초하이 홍보 포스터" alt="서초하이 홍보 포스터 이미지" />
 
 ### [주요 기능 소개]
 
-<img src="./assets/preview.png" width="60%" title="주요 기능 소개" alt="주요 기능 소개 이미지" />
+> <img src="./assets/preview.png" width="70%" title="주요 기능 소개" alt="주요 기능 소개 이미지" />
 
 ### [스크린샷]
 
-- #### [라이트 모드](./assets/screenshots/light#라이트-모드light-mode-스크린샷)
+> - #### [라이트 모드](./assets/screenshots/light#라이트-모드light-mode-스크린샷)
 
-- #### [다크 모드](./assets/screenshots/dark#다크-모드dark-mode-스크린샷)
+> - #### [다크 모드](./assets/screenshots/dark#다크-모드dark-mode-스크린샷)
 
 ---
 
