@@ -6,11 +6,11 @@
 
 ---
 
-<table border=1 align="center">
+<table border=1>
     <tr>
-        <td>로그인</td>
-        <td>회원가입-약관 동의</td>
-        <td>회원가입-학생 정보</td>
+        <td align="center">로그인</td>
+        <td align="center">회원가입-약관 동의</td>
+        <td align="center">회원가입-학생 정보</td>
     </tr>
     <tr>
         <td valign="top"><img src="./login.png" alt="로그인" /></td>
@@ -18,9 +18,9 @@
         <td valign="top"><img src="./register_studentInfo.png" alt="회원가입-학생 정보" /></td>
     </tr>
     <tr>
-        <td>회원가입-본인 정보</td>
-        <td>회원가입-연락처</td>
-        <td>회원가입-학생증</td>
+        <td align="center">회원가입-본인 정보</td>
+        <td align="center">회원가입-연락처</td>
+        <td align="center">회원가입-학생증</td>
     </tr>
     <tr>
         <td valign="top"><img src="./register_userInfo.png" alt="회원가입-본인 정보" /></td>
@@ -28,7 +28,7 @@
         <td valign="top"><img src="./register_studentCard.png" alt="회원가입-학생증" /></td>
     </tr>
     <tr>
-        <td>회원가입-비밀번호</td>
+        <td align="center">회원가입-비밀번호</td>
         <td></td>
         <td></td>
     </tr>
@@ -38,11 +38,11 @@
         <td></td>
     </tr>
     <tr>
-        <td>새로운 환경에서 로그인</td>
-        <td>새로운 환경에서 로그인-휴대전화 인증</td>
-        <td>새로운 환경에서 로그인-이메일 인증</td>
+        <td align="center">새로운 환경에서 로그인</td>
+        <td align="center">새로운 환경에서 로그인-휴대전화 인증</td>
+        <td align="center">새로운 환경에서 로그인-이메일 인증</td>
     </tr>
-        <tr>
+    <tr>
         <td valign="top"><img src="./session_newLogin.png" alt="새로운 환경에서 로그인" /></td>
         <td valign="top"><img src="./session_newLogin_verifyWithPhone.png" alt="새로운 환경에서 로그인-휴대전화 인증" /></td>
         <td valign="top"><img src="./session_newLogin_verifyWithEmail.png" alt="새로운 환경에서 로그인-이메일 인증" /></td>
@@ -55,11 +55,11 @@
 
 ---
 
-<table border=1 align="center">
+<table border=1>
     <tr>
-        <td>홈</td>
-        <td>메뉴</td>
-        <td>급식</td>
+        <td align="center">홈</td>
+        <td align="center">메뉴</td>
+        <td align="center">급식</td>
     </tr>
     <tr>
         <td valign="top"><img src="./home.png" alt="홈" /></td>
@@ -67,9 +67,9 @@
         <td valign="top"><img src="./lunch.png" alt="급식" /></td>
     </tr>
     <tr>
-        <td>학사일정</td>
-        <td>기출문제</td>
-        <td>서초고숲</td>
+        <td align="center">학사일정</td>
+        <td align="center">기출문제</td>
+        <td align="center">서초고숲</td>
     </tr>
     <tr>
         <td valign="top"><img src="./schedule.png" alt="학사일정" /></td>
@@ -84,11 +84,11 @@
 
 ---
 
-<table border=1 align="center">
+<table border=1>
     <tr>
-        <td>개인정보</td>
-        <td>내 계정</td>
-        <td>일반 설정</td>
+        <td align="center">개인정보</td>
+        <td align="center">내 계정</td>
+        <td align="center">일반 설정</td>
     </tr>
     <tr>
         <td valign="top"><img src="./settings_user.png" alt="개인정보" /></td>
@@ -96,13 +96,13 @@
         <td valign="top"><img src="./settings_general.png" alt="일반 설정" /></td>
     </tr>
     <tr>
-        <td>내 계정-세션 관리</td>
-        <td>FAQ</td>
+        <td align="center">내 계정-세션 관리</td>
+        <td align="center">FAQ</td>
         <td></td>
     </tr>
     <tr>
         <td valign="top"><img src="./settings_session.png" alt="내 계정-세션 관리" /></td>        
         <td valign="top"><img src="./faq.png" alt="FAQ" /></td>
-        <td valign="top"></td>
+        <td></td>
     </tr>
 </table>
