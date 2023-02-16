@@ -1,24 +1,108 @@
 # 다크 모드(Dark Mode) 스크린샷
 
-<table border=1 >
+---
+
+> ## 로그인 및 회원가입
+
+---
+
+<table border=1 style="text-align: center; font-size: 1.25rem; font-weight: 500;">
     <tr>
-        <td><img src="./home.png" alt="홈" style="min-width: 200px;" /></td>
-        <td><img src="./menu.png" alt="메뉴" style="min-width: 200px;"/></td>
-        <td><img src="./lunch.png" alt="급식" style="min-width: 200px;"/></td>
+        <td>로그인</td>
+        <td>회원가입-약관 동의</td>
+        <td>회원가입-학생 정보</td>
     </tr>
     <tr>
-        <td><img src="./schedule.png" alt="학사일정" style="min-width: 200px;"/></td>
-        <td><img src="./exams.png" alt="기출문제"style="min-width: 200px;"/></td>
-        <td><img src="./forest.png" alt="서초고숲" style="min-width: 200px;"/></td>
+        <td style="vertical-align: top"><img src="./login.png" alt="로그인" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./register_privacypolicy.png" alt="회원가입-약관 동의" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./register_studentInfo.png" alt="회원가입-학생 정보" style="min-width: 200px;" /></td>
     </tr>
     <tr>
-        <td><img src="./settings_user.png" alt="설정-개인정보" style="min-width: 200px;" /></td>
-        <td><img src="./settings_myaccount.png" alt="설정-내 계정" style="min-width: 200px;"/></td>
-        <td><img src="./settings_session.png" alt="설정-내 계정-세션 관리" style="min-width: 200px;" /></td>
+        <td>회원가입-본인 정보</td>
+        <td>회원가입-연락처</td>
+        <td>회원가입-학생증</td>
     </tr>
     <tr>
-        <td><img src="./settings_general.png" alt="설정-일반 설정" style="min-width: 200px;"/></td>
-        <td><img src="./faq.png" alt="FAQ" style="min-width: 200px;"/></td>
+        <td style="vertical-align: top"><img src="./register_userInfo.png" alt="회원가입-본인 정보" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./register_contactInfo.png" alt="회원가입-연락처" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./register_studentCard.png" alt="회원가입-학생증" style="min-width: 200px;" /></td>
+    </tr>
+    <tr>
+        <td>회원가입-비밀번호</td>
         <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top"><img src="./register_password.png" alt="비밀번호" style="min-width: 200px;" /></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>새로운 환경에서 로그인</td>
+        <td>새로운 환경에서 로그인-휴대전화 인증</td>
+        <td>새로운 환경에서 로그인-이메일 인증</td>
+    </tr>
+        <tr>
+        <td style="vertical-align: top"><img src="./session_newLogin.png" alt="새로운 환경에서 로그인" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./session_newLogin_verifyWithPhone.png" alt="새로운 환경에서 로그인-휴대전화 인증" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./session_newLogin_verifyWithEmail.png" alt="새로운 환경에서 로그인-이메일 인증" style="min-width: 200px;" /></td>
+    </tr>
+</table>
+
+---
+
+> ## 주요 기능
+
+---
+
+<table border=1 style="text-align: center; font-size: 1.25rem; font-weight: 500;">
+    <tr>
+        <td>홈</td>
+        <td>메뉴</td>
+        <td>급식</td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top"><img src="./home.png" alt="홈" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./menu.png" alt="메뉴" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./lunch.png" alt="급식" style="min-width: 200px;" /></td>
+    </tr>
+    <tr>
+        <td>학사일정</td>
+        <td>기출문제</td>
+        <td>서초고숲</td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top"><img src="./schedule.png" alt="학사일정" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./exams.png" alt="기출문제"style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./forest.png" alt="서초고숲" style="min-width: 200px;" /></td>
+    </tr>
+</table>
+
+---
+
+> ## 설정 및 FAQ
+
+---
+
+<table border=1 style="text-align: center; font-size: 1.25rem; font-weight: 500;">
+    <tr>
+        <td>개인정보</td>
+        <td>내 계정</td>
+        <td>일반 설정</td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top"><img src="./settings_user.png" alt="개인정보" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./settings_myaccount.png" alt="내 계정" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"><img src="./settings_general.png" alt="일반 설정" style="min-width: 200px;" /></td>
+    </tr>
+    <tr>
+        <td>내 계정-세션 관리</td>
+        <td>FAQ</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td style="vertical-align: top"><img src="./settings_session.png" alt="내 계정-세션 관리" style="min-width: 200px;" /></td>        
+        <td style="vertical-align: top"><img src="./faq.png" alt="FAQ" style="min-width: 200px;" /></td>
+        <td style="vertical-align: top"></td>
     </tr>
 </table>

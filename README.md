@@ -24,8 +24,9 @@
 
 ### [스크린샷]
 
-> - #### [라이트 모드](./assets/screenshots/light#라이트-모드light-mode-스크린샷)
-> - #### [다크 모드](./assets/screenshots/dark#다크-모드dark-mode-스크린샷)
+> - #### [랜딩 페이지](./assets//screenshots//landing_page)
+> - #### [라이트 모드](./assets/screenshots/light)
+> - #### [다크 모드](./assets/screenshots/dark)
 
 ---
 
