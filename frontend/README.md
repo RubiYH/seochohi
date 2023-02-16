@@ -19,6 +19,9 @@
 >   휴대폰 인증 번호 시스템 구현
 > - ## [React Intersection Observer](https://github.com/thebuilder/react-intersection-observer)
 >   게시글 무한 스크롤 기능 구현
+> - ## [React Transition Group](https://reactcommunity.org/react-transition-group)
+>   리액트 컴포넌트에 애니메이션 효과 추가
+>   페이지 이동 시 스와이프 효과 구현
 > - ## [Slick-Carousel](https://github.com/kenwheeler/slick)
 >   이미지 좌우 스크롤 기능 구현
 > - ## [AOS](https://michalsnik.github.io/aos)
