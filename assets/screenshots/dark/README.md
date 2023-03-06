@@ -69,40 +69,31 @@
     <tr>
         <td align="center">학사일정</td>
         <td align="center">기출문제</td>
-        <td align="center">서초고숲</td>
+        <td align="center">서초고숲-목록</td>
     </tr>
     <tr>
         <td valign="top"><img src="./schedule.png" alt="학사일정" /></td>
         <td valign="top"><img src="./exams.png" alt="기출문제"/></td>
-        <td valign="top"><img src="./forest.png" alt="서초고숲" /></td>
+        <td valign="top"><img src="./forest_list.png" alt="서초고숲-목록" /></td>
     </tr>
-</table>
-
----
-
-> ## 설정 및 FAQ
-
----
-
-<table border=1>
     <tr>
+        <td align="center">서초고숲-게시글</td>
         <td align="center">개인정보</td>
         <td align="center">내 계정</td>
-        <td align="center">일반 설정</td>
     </tr>
     <tr>
+        <td valign="top"><img src="./forest_post.png" alt="서초고숲-게시글" /></td>
         <td valign="top"><img src="./settings_user.png" alt="개인정보" /></td>
         <td valign="top"><img src="./settings_myaccount.png" alt="내 계정" /></td>
-        <td valign="top"><img src="./settings_general.png" alt="일반 설정" /></td>
     </tr>
     <tr>
+        <td align="center">일반 설정</td>
         <td align="center">내 계정-세션 관리</td>
         <td align="center">FAQ</td>
-        <td></td>
     </tr>
     <tr>
+        <td valign="top"><img src="./settings_general.png" alt="일반 설정" /></td>
         <td valign="top"><img src="./settings_session.png" alt="내 계정-세션 관리" /></td>        
         <td valign="top"><img src="./faq.png" alt="FAQ" /></td>
-        <td></td>
     </tr>
 </table>
